@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c14">
+  <meta name="description" content="Ruixi Feng — Rutgers Business Analytics and Information Technology student exploring quantitative research, technology, and business analytics.">
+  <meta property="og:title" content="Ruixi Feng — Quant × Technology × Business">
+  <meta property="og:description" content="Connecting quantitative thinking, technical systems, and business insight.">
+  <meta property="og:type" content="website">
+  <title>Ruixi Feng — Quant × Technology × Business</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#home" aria-label="Ruixi Feng, home">RF<span class="brand-dot">.</span><span class="brand-divider"></span><span class="brand-name">RUIXI FENG</span></a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#projects" data-i18n="navWork">Selected work</a>
+        <a href="#experience" data-i18n="navExperience">Experience</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="language-toggle" class="language-button" type="button" aria-label="切换到中文">中文</button>
+        <button id="motion-toggle" class="motion-button" type="button" aria-pressed="true" title="Pause animation"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="sr-only" data-i18n="motion">Toggle animation</span></button>
+        <button id="menu-toggle" class="menu-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section id="home" class="hero section-shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span><span data-i18n="eyebrow">QUANT × TECHNOLOGY × BUSINESS</span></div>
+        <h1>Ruixi<br><span>Feng</span><span class="name-period">.</span></h1>
+        <p class="hero-statement" data-i18n="heroStatement">Find the signal.<br>Build what matters.</p>
+        <p class="hero-description" data-i18n="heroDescription">Connecting quantitative thinking, technical systems, and business insight. A BAIT student at Rutgers Business School, exploring the space where data becomes decisions.</p>
+        <div class="hero-cta"><a class="button button-primary" href="#projects"><span data-i18n="explore">Explore my work</span><span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.linkedin.com/in/ruixifeng777" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-location"><span class="location-icon" aria-hidden="true">⌾</span> <span data-i18n="location">New Brunswick, NJ</span><span class="meta-separator">/</span><span>RUTGERS BUSINESS SCHOOL</span></div>
+      </div>
+      <figure class="signal-visual" aria-label="Abstract animated signal network, a visual illustration">
+        <div class="visual-top"><span><i></i> SIGNAL SPACE</span><span>RF / 001</span></div>
+        <canvas id="signal-canvas" aria-hidden="true"></canvas>
+        <div class="orbit-label orbit-quant"><span>01</span> QUANT</div>
+        <div class="orbit-label orbit-it"><span>02</span> IT / SYSTEMS</div>
+        <div class="orbit-label orbit-ba"><span>03</span> BUSINESS ANALYTICS</div>
+        <div class="visual-center"><span class="center-cross" aria-hidden="true">+</span></div>
+        <figcaption><span data-i18n="visualCaption">PATTERNS → SYSTEMS → INSIGHT</span><span class="visual-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></figcaption>
+      </figure>
+      <div class="hero-bottom"><span data-i18n="heroBottom">CURIOUS BY NATURE. ANALYTICAL BY DESIGN.</span><a href="#about"><span data-i18n="scroll">SCROLL TO EXPLORE</span><span aria-hidden="true">↓</span></a></div>
+    </section>
+    <div class="discipline-strip"><div class="section-shell strip-inner"><span>QUANTITATIVE THINKING</span><span aria-hidden="true">✳</span><span>TECHNICAL BUILDING</span><span aria-hidden="true">✳</span><span>BUSINESS IMPACT</span><span aria-hidden="true">✳</span></div></div>
+    <section id="about" class="section-shell section-block">
+      <div class="section-heading"><span class="section-index">01 / ABOUT</span><span class="section-note" data-i18n="aboutNote">A MULTIDISCIPLINARY PERSPECTIVE</span></div>
+      <div class="about-grid">
+        <h2 data-i18n="aboutTitle">At the intersection<br>of <em>three worlds.</em></h2>
+        <div class="about-copy"><p class="lead" data-i18n="aboutLead">I’m Ruixi, a Business Analytics and Information Technology student at Rutgers Business School.</p><p data-i18n="aboutBody">My interests span financial markets, data-driven strategy, and the systems that connect them. Through quantitative research simulations, business analysis, and e-commerce operations, I’m learning to turn complex questions into practical, structured solutions.</p><div class="education-inline"><span class="education-mark" aria-hidden="true">R</span><div><strong>Rutgers Business School</strong><span data-i18n="degree">B.S. Business Analytics & Information Technology</span><span class="mono" data-i18n="graduation">EXPECTED MAY 2029 · GPA 3.51 / 4.00</span></div></div></div>
+      </div>
+      <div id="focus-grid" class="focus-grid"></div>
+    </section>
+    <section id="projects" class="section-shell section-block">
+      <div class="section-heading"><span class="section-index">02 / SELECTED WORK</span><span class="section-note" data-i18n="projectsNote">FROM QUESTION TO APPROACH</span></div>
+      <div class="heading-row"><h2 data-i18n="projectsTitle">Ideas, put <em>to work.</em></h2><div class="project-filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true" data-i18n="all">All work</button><button type="button" data-filter="quant" aria-pressed="false">Quant</button><button type="button" data-filter="it" aria-pressed="false">IT</button><button type="button" data-filter="ba" aria-pressed="false">BA</button></div></div>
+      <p id="project-status" class="sr-only" role="status" aria-live="polite"></p>
+      <div id="project-grid" class="project-grid"></div>
+    </section>
+    <section id="experience" class="section-shell section-block">
+      <div class="section-heading"><span class="section-index">03 / EXPERIENCE</span><span class="section-note" data-i18n="experienceNote">LEARNING THROUGH DOING</span></div>
+      <div class="experience-layout"><div class="experience-intro"><h2 data-i18n="experienceTitle">Built through<br><em>experience.</em></h2><p data-i18n="experienceIntro">From operational details to strategic questions, each experience adds a different lens.</p><a class="text-link" href="https://www.linkedin.com/in/ruixifeng777" target="_blank" rel="noopener noreferrer"><span data-i18n="fullProfile">Full profile on LinkedIn</span> ↗</a></div><div id="timeline" class="timeline"></div></div>
+    </section>
+    <section id="toolkit" class="section-shell section-block">
+      <div class="section-heading"><span class="section-index">04 / TOOLKIT & LEARNING</span><span class="section-note" data-i18n="toolkitNote">ALWAYS A WORK IN PROGRESS</span></div>
+      <div class="toolkit-grid"><div><h2 data-i18n="toolkitTitle">A growing<br><em>toolkit.</em></h2><div id="skill-groups"></div></div><div class="credentials-panel"><div class="panel-title"><span data-i18n="credentialsTitle">Selected credentials</span><span aria-hidden="true">↗</span></div><div id="credentials"></div><details class="more-credentials"><summary data-i18n="moreCredentials">More credentials & learning</summary><div id="extra-credentials"></div></details><a class="credential-link" href="https://www.linkedin.com/in/ruixifeng777/details/certifications/" target="_blank" rel="noopener noreferrer" data-i18n="viewCredentials">View credentials on LinkedIn ↗</a></div></div>
+      <div class="beyond"><span class="mono" data-i18n="beyondLabel">BEYOND THE SCREEN</span><p data-i18n="beyondBody">Piano. Photography. Architecture. Table tennis.<br>Different ways of seeing patterns — and the world.</p></div>
+    </section>
+    <section id="contact" class="contact-section"><div class="section-shell"><span class="section-index">05 / LET’S CONNECT</span><div class="contact-heading"><h2 data-i18n="contactTitle">The next idea<br>starts with <em>hello.</em></h2><a class="contact-arrow" href="https://www.linkedin.com/in/ruixifeng777" target="_blank" rel="noopener noreferrer" aria-label="Connect with Ruixi Feng on LinkedIn">↗</a></div><div class="contact-links"><a href="https://www.linkedin.com/in/ruixifeng777" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a><a href="https://github.com/Arcionyx" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></div></div></section>
+  </main>
+  <footer class="section-shell site-footer"><a class="brand" href="#home">RF<span class="brand-dot">.</span></a><span>© <span id="year"></span> Ruixi Feng</span><span class="footer-tagline" data-i18n="footer">THINK IN DATA. BUILD WITH PURPOSE.</span><a href="#home" aria-label="Back to top">↑</a></footer>
+  <dialog id="project-dialog"><div class="dialog-header"><span class="mono">PROJECT / DETAIL</span><button id="close-dialog" type="button" aria-label="Close project details">×</button></div><div id="dialog-content"></div></dialog>
+  <noscript><div class="noscript-note">Please enable JavaScript to view project details, experience and credentials. You can also visit <a href="https://www.linkedin.com/in/ruixifeng777">Ruixi’s LinkedIn profile</a>.</div></noscript>
+</body>
+</html>
