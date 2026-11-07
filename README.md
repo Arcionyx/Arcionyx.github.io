@@ -47,3 +47,5 @@ These are organizational references. No biography, testimonials, project outcome
 Project scope figures are labeled separately from measured outcomes. The owner has not supplied quantitative validation results for publication. No model accuracy, financial return, or operational improvement percentage is inferred from record counts, listing counts, or the number of risk buckets.
 
 Project attachments and evidence links are currently withheld. Files provided later for contribution review must not be added to the public deployment without the owner's release instruction. Published artifacts need a real HTTPS URL and a `published` status in `case-studies.js`. Do not mark data confidential or claim a reproduction package exists unless those facts have been established.
+
+The natural-gas case covers the owner's confirmed Task 1–2 submissions, including storage-contract pricing. Credit-risk and FICO case details follow the inspected Task 3–4 submission text. Source review is separate from independent performance validation; raw submissions and datasets remain private.

@@ -37,3 +37,17 @@ The current contribution descriptions therefore remain limited to the resume's r
 All original project artifact slots are withheld from public linking. Four possible artifact categories are displayed; the absence of public links does not establish that each artifact category exists. No dataset sample, report, video, source repository, or reproduction package has been invented or attached as proof of original work. Existing cover graphics remain explicitly conceptual.
 
 The private working checklist is outside the repository and deployment bundle. Future review of owner-supplied files is for contribution attribution; it is not authorization to publish the raw files.
+
+## Confirmed JPMorgan submissions
+
+The owner explicitly confirmed that the four Task 1–4 documents are personal submission versions that retained the Example Answer titles. They are treated as owner-attributed submissions, not classified as course-provided answers based on the filename. This confirmation does not establish which lines were originally authored or reused, or supply independent validation results.
+
+The code text was inspected without executing it. The natural-gas case now combines Tasks 1–2: `simple_regression`, `bilinear_regression`, `interpolate`, and `price_contract`. The pricing routine is described as a simplified inventory/cash-flow prototype; hypothetical contract values are not represented as realized trading profit.
+
+Task 3 describes two constructed balance/income ratios, a five-feature scikit-learn logistic-regression model, and in-sample predicted-label diagnostics. The submission does not contain a complete expected-loss output function or held-out probability evaluation. The current case and journey wording were narrowed accordingly, rather than treating the task prompt or prior resume wording as evidence that every requested output was implemented.
+
+Task 4 descriptions identify cumulative counts, `log_likelihood`, dynamic-programming transitions, and boundary backtracking. No saved objective value, comparison score, or stability result was supplied.
+
+The two copies of each CSV were byte-identical. Read-only inspection confirmed 48 monthly gas rows from 2020-10-31 to 2024-09-30 and 10,000 loan rows with eight columns. These counts verify input scope; they do not verify model performance or code authorship. The WEB document contained three background links and was not treated as a project output.
+
+All uploaded raw documents, CSV records, and private review notes remain outside the repository and deployment bundle. Public artifact links stay withheld as requested.

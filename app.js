@@ -1,6 +1,6 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=4';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=4';
-import { caseStudyCopy, caseStudies } from './case-studies.js?v=4';
+import { copy, projects, experience, skills, credentials } from './content.js?v=5';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=5';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=5';
 
 Object.assign(copy.en, extendedCopy.en);
 Object.assign(copy.zh, extendedCopy.zh);
@@ -137,6 +137,7 @@ function renderCaseEvidence(study){
   const panel=element('section','case-artifacts');panel.append(element('h3','',copy[language].artifacts));
   const published=study.artifacts.some(asset=>asset.status==='published'&&artifactUrl(asset.url));
   if(!published)panel.append(element('p','artifact-disclosure',copy[language].evidenceIntro));
+  if(study.reviewNote)panel.append(element('p','artifact-disclosure',study.reviewNote[language]));
   const grid=element('div','artifact-grid');
   study.artifacts.forEach(asset=>{
     const url=asset.status==='published'?artifactUrl(asset.url):null;
