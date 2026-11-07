@@ -63,3 +63,7 @@ The public case now separates the owner's recommendation and trade-offs from the
 No SQL script, valuation model, or quantified scenario model was included in this batch. These are not described as verified implementations in the updated case, perspective panel, or experience timeline. Prior resume assertions are not used to imply that every implementation is present in the newly reviewed materials.
 
 Original attachments and evidence links remain withheld. Only the authorized portfolio summary, judgment, contribution boundaries, and deliverable scope were updated.
+
+## Homepage portrait
+
+The owner explicitly requested publication of the supplied personal photo on the homepage. The JPEG is included as `assets/ruixi-feng-portrait.jpg` without changing its pixels or aspect ratio. It is shown in a separate frame over a decorative signal background; the perspective buttons sit below the frame. The earlier restriction on project documents, datasets, and evidence links remains in effect.
