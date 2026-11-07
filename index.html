@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080c14">
-  <meta name="description" content="Ruixi Feng — Rutgers Business Analytics and Information Technology student exploring quantitative research, technology, and business analytics.">
+  <meta name="description" content="Ruixi Feng — Rutgers BAIT ’29. I turn financial and business questions into models, tools, and clear recommendations.">
   <meta property="og:title" content="Ruixi Feng — Quant × Technology × Business">
-  <meta property="og:description" content="Ruixi Feng: quantitative curiosity, technical execution, and business perspective. Explore projects, experience, learning, and life beyond the models.">
+  <meta property="og:description" content="Rutgers BAIT ’29. Financial and business questions turned into models, tools, and clear recommendations. Explore applied projects and a natural-gas research demo.">
   <meta property="og:type" content="website">
   <title>Ruixi Feng — Quant × Technology × Business</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=2">
-  <link rel="stylesheet" href="./upgrade.css?v=8">
-  <script type="module" src="./app.js?v=6"></script>
+  <link rel="stylesheet" href="./upgrade.css?v=9">
+  <script type="module" src="./app.js?v=9"></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -39,8 +39,9 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="status-dot"></span><span data-i18n="eyebrow">QUANT × TECHNOLOGY × BUSINESS</span></div>
         <h1>Ruixi<br><span>Feng</span><span class="name-period">.</span></h1>
-        <p class="hero-statement" data-i18n="heroStatement">Quantitative thinking.<br>Technical execution.<br>Business perspective.</p>
-        <p class="hero-description" data-i18n="heroDescription">I’m a Rutgers Business School BAIT student connecting financial questions, working code, and business decisions. My work spans risk modeling simulations, e-commerce analytics, automation, and strategy.</p>
+        <p class="hero-program">Rutgers BAIT ’29</p>
+        <p class="hero-statement" data-i18n="heroStatement">I turn financial and business questions into models, tools, and clear recommendations.</p>
+        <p class="hero-description" data-i18n="heroDescription">Studying Business Analytics and Information Technology at Rutgers Business School. Exploring energy pricing, credit risk, e-commerce systems, and business strategy.</p>
         <div class="hero-cta"><a class="button button-primary" href="#projects"><span data-i18n="explore">Explore my work</span><span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.linkedin.com/in/ruixifeng777" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div>
         <div class="hero-location"><span class="location-icon" aria-hidden="true">⌾</span> <span data-i18n="location">New Brunswick, NJ</span><span class="meta-separator">/</span><span>RUTGERS BUSINESS SCHOOL</span></div>
       </div>
@@ -74,9 +75,49 @@
     <section id="projects" class="section-shell section-block">
       <div class="section-heading"><span class="section-index">02 / SELECTED WORK</span><span class="section-note" data-i18n="projectsNote">FROM QUESTION TO APPROACH</span></div>
       <div class="heading-row"><h2 data-i18n="projectsTitle">The work behind<br><em>the interests.</em></h2><div class="project-filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true" data-i18n="all">All work</button><button type="button" data-filter="quant" aria-pressed="false">Quant</button><button type="button" data-filter="it" aria-pressed="false">IT</button><button type="button" data-filter="ba" aria-pressed="false">BA</button></div></div>
-      <p class="section-intro" data-i18n="projectsIntro">Two applied business projects and three case studies covering four Forage tasks, organized around the problem, my contribution, method, results, and evidence. Project scope is labeled separately from measured impact.</p>
+      <p class="section-intro" data-i18n="projectsIntro">Applied work in e-commerce and business strategy, followed by one quantitative research series. Each case connects the problem, my contribution, and the deliverables.</p>
+      <p class="publication-note" data-i18n="publicationNote">Original project attachments remain private for now. The dated gas follow-up below includes public reproduction code, aggregate validation results, and a synthetic-data demo. Individual case studies retain their ownership and evaluation limits.</p>
       <p id="project-status" class="sr-only" role="status" aria-live="polite"></p>
       <div id="project-grid" class="project-grid"></div>
+      <article id="gas-lab" class="gas-lab" tabindex="-1" aria-labelledby="gas-lab-title">
+        <div class="gas-lab-header">
+          <div><p class="mono gas-kicker" data-gas-i18n="kicker">FEATURED FOLLOW-UP / 2026-11-07</p><h2 id="gas-lab-title" data-gas-i18n="title">From a price curve<br>to a storage decision.</h2></div>
+          <div class="gas-lab-intro"><p data-gas-i18n="intro">Estimate a date-based price, compare forecasting errors, and explore a simple storage contract.</p><p class="gas-attribution" data-gas-i18n="attribution">New AI-assisted reproduction · November 7, 2026. Separate from my original Forage submission.</p></div>
+        </div>
+        <div class="gas-workflow" aria-label="Research workflow"><span data-gas-i18n="step1">01 / ESTIMATE PRICES</span><span aria-hidden="true">→</span><span data-gas-i18n="step2">02 / TEST OUT OF TIME</span><span aria-hidden="true">→</span><span data-gas-i18n="step3">03 / VALUE CASH FLOWS</span></div>
+        <div class="gas-demo-banner"><span class="gas-demo-dot" aria-hidden="true"></span><p data-gas-i18n="synthetic">Interactive demo: generated synthetic prices, not the uploaded dataset. All contract amounts are illustrative.</p></div>
+        <div class="gas-demo-grid">
+          <div class="gas-chart-panel">
+            <div class="gas-panel-heading"><h3 data-gas-i18n="curveTitle">The price curve</h3><span class="mono" data-gas-i18n="curveUnit">ILLUSTRATIVE USD / UNIT</span></div>
+            <div class="gas-chart-legend"><span class="legend-observed" data-gas-i18n="generated">Generated monthly points</span><span class="legend-fit" data-gas-i18n="fitted">Fitted curve</span><span class="legend-forecast" data-gas-i18n="forecast">12-month extension</span><span class="legend-buy" data-gas-i18n="buyMarker">Buy date</span><span class="legend-sell" data-gas-i18n="sellMarker">Sell date</span></div>
+            <div id="gas-chart" class="gas-chart"></div>
+            <p class="gas-chart-note" data-gas-i18n="chartNote">48 synthetic month-end prices, Oct 2020–Sep 2024. Trend + annual seasonality; extension through Sep 2025. Historical scenario, point estimates only; no prediction interval.</p>
+            <details class="gas-table-details"><summary data-gas-i18n="dataTable">Inspect generated data & estimates</summary><div class="gas-table-scroll"><table><caption class="sr-only" data-gas-i18n="dataCaption">Generated monthly prices and estimates from the demonstration model</caption><thead><tr><th scope="col" data-gas-i18n="date">Date</th><th scope="col" data-gas-i18n="generatedPrice">Generated price</th><th scope="col" data-gas-i18n="modelPrice">Model estimate</th></tr></thead><tbody id="gas-synthetic-table"></tbody></table></div></details>
+          </div>
+          <div class="gas-contract-panel">
+            <div class="gas-panel-heading"><h3 data-gas-i18n="contractTitle">Explore a storage contract</h3></div>
+            <form id="gas-contract-form">
+              <div class="gas-input-grid">
+                <label><span data-gas-i18n="injectDate">Buy / inject</span><input type="date" name="injection" value="2024-11-15" min="2020-10-31" max="2025-09-30" required></label>
+                <label><span data-gas-i18n="withdrawDate">Sell / withdraw</span><input type="date" name="withdrawal" value="2025-02-15" min="2020-10-31" max="2025-09-30" required></label>
+                <label><span data-gas-i18n="volume">Volume (units)</span><input type="number" name="volume" value="1000" min="1" max="5000" step="1" inputmode="numeric" required></label>
+                <label><span data-gas-i18n="monthlyFee">Storage (USD / month)</span><input type="number" name="monthlyFee" value="50" min="0" max="1000000" step="0.01" inputmode="decimal" required></label>
+              </div>
+              <button type="submit" class="button button-primary"><span data-gas-i18n="calculate">Calculate scenario</span><span aria-hidden="true">↗</span></button>
+              <p id="gas-form-error" class="gas-form-error" role="alert" hidden></p>
+            </form>
+            <div id="gas-contract-result" class="gas-contract-result" role="status" aria-live="polite"></div>
+            <details class="gas-assumptions"><summary data-gas-i18n="assumptionsTitle">Assumptions & calculation rules</summary><p data-gas-i18n="assumptions">One buy and one sell in this demo. Capacity: 10,000 units; daily injection/withdrawal caps: 5,000 each; injection and withdrawal fees: USD 0.02/unit each; transport: 0; discount rate: 0. No transit delay. Storage is billed per started month anchored to the injection date; same-day storage costs zero. Inventory must close at zero. Same-day events inject first, then withdraw.</p></details>
+          </div>
+        </div>
+        <section class="gas-validation-panel" aria-labelledby="gas-validation-title">
+          <div class="gas-validation-heading"><div><span class="mono gas-kicker" data-gas-i18n="validationKicker">VALIDATION / UPLOADED 48-ROW SERIES</span><h3 id="gas-validation-title" data-gas-i18n="validationTitle">Test the model on later dates.</h3></div><p data-gas-i18n="validationIntro">These scores use the supplied historical CSV, not the synthetic demo. Public outputs contain aggregate metrics only.</p></div>
+          <p class="gas-protocol" data-gas-i18n="protocol">Fixed holdout: train on 36 months (Oct 2020–Sep 2023); predict the next 12 months (Oct 2023–Sep 2024), with no refitting. Baseline: use the price from the same month one year earlier.</p>
+          <div id="gas-validation-content" aria-live="polite"><p class="gas-loading" data-gas-i18n="loading">Loading validation results…</p></div>
+          <p class="gas-validation-limit" data-gas-i18n="validationLimit">A small educational time series and a single holdout year do not establish live-market performance. Error units follow the supplied CSV; no forecast interval or trading-return claim is provided.</p>
+          <div class="gas-proof-links"><a id="gas-source-link" class="text-link" href="https://github.com/Arcionyx/Arcionyx.github.io/tree/d96957acbf9c3481b0849fafa13cbfbfd9005dbd/research/gas-reproduction" target="_blank" rel="noopener noreferrer" data-gas-i18n="sourceLink">Reproduction, tests & methodology ↗</a><a class="text-link" href="./assets/gas-validation.json" target="_blank" rel="noopener noreferrer" data-gas-i18n="resultsLink">Aggregate results JSON ↗</a></div>
+        </section>
+      </article>
     </section>
     <section id="experience" class="section-shell section-block">
       <div class="section-heading"><span class="section-index">03 / EXPERIENCE</span><span class="section-note" data-i18n="experienceNote">LEARNING THROUGH DOING</span></div>

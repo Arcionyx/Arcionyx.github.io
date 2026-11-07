@@ -1,6 +1,6 @@
 # Ruixi Feng — personal portfolio
 
-A responsive black-and-blue portfolio connecting Quant, IT, and Business Analytics. Includes an interactive three-perspective profile, five detailed case studies, five filterable experience entries, academic coursework, twelve learning records organized by theme, and a personal interests section. English and Chinese copy, a pausable mathematical wireframe, and a reading-progress indicator. Static HTML/CSS/JavaScript; no production dependencies, backend, API key, or database required.
+A responsive black-and-blue portfolio connecting Quant, IT, and Business Analytics. Two applied project cards and one Forage series entry preserve five detailed case studies. A dated natural-gas follow-up adds a synthetic-data storage demo and aggregate out-of-time validation. Includes five filterable experience entries, academic coursework, twelve learning records, and personal interests. English and Chinese copy, a pausable mathematical wireframe, and a reading-progress indicator. Static HTML/CSS/JavaScript; no production dependencies, backend, API key, or database required.
 
 ## Preview
 
@@ -15,7 +15,10 @@ Open http://localhost:3000. The `dist/` directory contains the complete deployab
 
 - `content.js`: shared bilingual copy, credentials, skills, and project/experience exports.
 - `profile.js`: expanded bilingual narrative, case studies, journey entries, evidence, coursework, and personal interests.
-- `case-studies.js`: project problems, personal contributions and ownership boundaries, methods, reported deliverables, validation limits, and artifact publication status. Evidence links are currently withheld at the owner's request.
+- `case-studies.js`: project problems, personal contributions and ownership boundaries, methods, reported deliverables, validation limits, and artifact publication status. Original attachments remain withheld; the new dated gas reproduction is public.
+- `gas-lab.js`: bilingual synthetic-data chart, storage-contract controls, and validation presentation.
+- `research/gas-reproduction/`: new AI-assisted reproduction, methodology, tests, and independent NumPy check. See its README for attribution and reproduction instructions.
+- `assets/gas-validation.json`: aggregate validation output; contains no original price rows or individual predictions.
 - `styles.css`: colors, spacing, responsive layouts, and reduced-motion support.
 - `upgrade.css`: perspective explorer, case-study layout, education, learning groups, and personal sections.
 - `app.js`: filtering, project dialogs, language switching, and animation.
@@ -44,10 +47,16 @@ These are organizational references. No biography, testimonials, project outcome
 
 ## Project evidence
 
-Project scope figures are labeled separately from measured outcomes. The owner has not supplied quantitative validation results for publication. No model accuracy, financial return, or operational improvement percentage is inferred from record counts, listing counts, or the number of risk buckets.
+Project scope figures are labeled separately from measured outcomes. The original submissions do not contain supplied independent validation results. No model accuracy, financial return, or operational improvement percentage is inferred from record counts, listing counts, or the number of risk buckets.
 
-Project attachments and evidence links are currently withheld. Files provided later for contribution review must not be added to the public deployment without the owner's release instruction. Published artifacts need a real HTTPS URL and a `published` status in `case-studies.js`. Do not mark data confidential or claim a reproduction package exists unless those facts have been established.
+Original project attachments and evidence links remain withheld. The owner requested a dated natural-gas follow-up on November 7, 2026; its newly authored AI-assisted code, synthetic demo, tests, and aggregate results are public. This does not release the original submissions or datasets. Files provided for contribution review must not be added to the public deployment without the owner's release instruction. Published artifacts need a real HTTPS URL and a `published` status in `case-studies.js`. Do not mark data confidential unless that has been established.
 
 The natural-gas case covers the owner's confirmed Task 1–2 submissions, including storage-contract pricing. Credit-risk and FICO case details follow the inspected Task 3–4 submission text. Source review is separate from independent performance validation; raw submissions and datasets remain private.
 
 The Disney case draws on two supplied written analyses and a 24-page presentation PDF. Its personal recommendation and trade-offs are displayed separately from the company data used as inputs. The source PPTX could not be transferred because it exceeded 32 MiB; it is not counted as an inspected artifact. Original attachments remain private.
+
+## Gas follow-up validation
+
+The new implementation uses a joint least-squares linear trend and annual sine/cosine terms, distinct from the original submitted implementation. It trains on the first 36 months and predicts the next 12 without refitting. MAE: 0.160421 versus 0.566667 for a lag-12 seasonal baseline; RMSE: 0.208369 versus 0.627163. Units follow the uploaded CSV. A separate expanding-window check covers 24 one-month forecasts. Eight error values were independently recomputed with NumPy. The demo chart and contract amounts use fully generated synthetic inputs only.
+
+Run `node --test research/gas-reproduction/gas-model.test.mjs` for the 27 model and contract tests. GitHub Actions runs these before building. The results belong to this dated AI-assisted follow-up, not to the original submission; they establish neither live-market performance nor trading returns.

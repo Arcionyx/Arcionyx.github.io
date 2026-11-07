@@ -67,3 +67,15 @@ Original attachments and evidence links remain withheld. Only the authorized por
 ## Homepage portrait
 
 The owner explicitly requested publication of the supplied personal photo, then asked to move it into About as a small circular avatar while restoring the full hero signal sphere. The JPEG remains unchanged as `assets/ruixi-feng-portrait.jpg`; CSS supplies the circular display and framing. The avatar is 128 px on desktop and 96 px on mobile. The earlier restriction on project documents, datasets, and evidence links remains in effect.
+
+## Dated natural-gas follow-up and homepage structure
+
+On November 7, 2026, the owner requested four changes: a concrete hero positioning statement with Rutgers BAIT ’29, a developed natural-gas representative case with new validation and a demo, one Forage series entry preserving its three module details, and one homepage publication note instead of repeated withheld-evidence badges. Personal photography for Beyond was deferred; that content was not changed.
+
+The new follow-up is explicitly attributed as AI-assisted work dated 2026-11-07. Its joint least-squares trend/annual-seasonality model is a new implementation; the original submitted functions and their ownership description remain separately recorded. No new performance is retroactively attributed to the original submission. Its public source is pinned to commit d96957acbf9c3481b0849fafa13cbfbfd9005dbd.
+
+The 48-row uploaded gas input (SHA-256 ec8eb18340c7bd24c92b4307325bdcc1f285cdf9e452c3dbad5133527c64722f) was used locally for a fixed 36-month training / 12-month holdout evaluation and a separate expanding-window one-month check with 24 initial training rows. The model specification was fixed before evaluation, with no tuning on test values. The comparison uses the price from the same month a year earlier. Both MAE and RMSE are reported in the CSV's price units. All eight values were independently recomputed using NumPy least squares, with maximum absolute difference 4.45e-15. Twenty-seven synthetic model/contract tests passed, including billing and inventory boundaries.
+
+Only aggregate scores, source hash, protocol, and evaluation date are published in assets/gas-validation.json. Original rows and per-date predictions remain outside the repository. The interactive chart and contract use a separately specified synthetic generator, illustrative USD/unit prices, and explicit inventory, capacity, daily-rate, fee, and billing assumptions. The dataset-specific scores cannot be recomputed from the synthetic demo; a matching private input file is required. No prediction interval, live-market performance, company adoption, or trading return is claimed.
+
+The new reproduction is the only newly published project proof link. Original task documents, CSVs, reports, and evidence links remain withheld as requested. The homepage has two applied project cards and a single Forage series, with four tasks organized into three modules. All five contribution dialogs are retained.

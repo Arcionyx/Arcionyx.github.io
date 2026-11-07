@@ -1,6 +1,7 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=6';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=6';
-import { caseStudyCopy, caseStudies } from './case-studies.js?v=6';
+import { copy, projects, experience, skills, credentials } from './content.js?v=9';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=9';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=9';
+import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=9';
 
 Object.assign(copy.en, extendedCopy.en);
 Object.assign(copy.zh, extendedCopy.zh);
@@ -18,6 +19,9 @@ let currentJourney = 'all';
 let currentLens = 'quant';
 let activeProject = null;
 let lastProjectButton = null;
+let nextDialogFocus = null;
+let seriesOpen = false;
+const seriesIds = new Set(['gas-forecast','credit-risk','fico-segmentation']);
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let motionEnabled = saved('rf-motion') === null ? !reducedMotion.matches : saved('rf-motion') === 'on';
 
@@ -53,7 +57,7 @@ function renderEvidence() {
   const grid = $('#evidence-grid'); grid.replaceChildren();
   evidence.forEach(item => {
     const link = element('a', 'evidence-item'); link.href = `#work-${item.project}`;
-    link.addEventListener('click',()=>setProjectFilter('all'));
+    link.addEventListener('click',()=>{setProjectFilter('all');revealModule(item.project);});
     link.append(element('span', 'evidence-value', item.value),element('span', 'evidence-description', item.label[language]),element('span', 'evidence-context', `${item.context[language]} ↗`));
     grid.append(link);
   });
@@ -106,28 +110,71 @@ function projectArt(type, number) {
   return box;
 }
 
+function revealModule(id) {
+  if(!seriesIds.has(id))return;
+  const details=$('.series-details');
+  if(details){details.open=true;seriesOpen=true;}
+}
+function revealHashModule() {
+  const id=window.location.hash.replace('#work-','');
+  if(!seriesIds.has(id))return;
+  if(!document.getElementById(`work-${id}`))setProjectFilter('all');
+  revealModule(id);
+  document.getElementById(`work-${id}`)?.scrollIntoView({block:'start'});
+}
+function projectDetailButton(project) {
+  const button = element('button', 'project-detail'); button.type = 'button';
+  button.append(element('span', '', copy[language].details), element('span', '', '↗'));
+  button.setAttribute('aria-label', `${copy[language].details}: ${project.title[language].replace('\n',' ')}`);
+  button.addEventListener('click', () => openProject(project,button));
+  return button;
+}
+function projectCardSection(label,text,className) {
+  const section=element('div','case-card-section');
+  section.append(element('span','case-card-label',label),element('p',className,text));return section;
+}
 function renderProjects() {
   const grid = $('#project-grid'); grid.replaceChildren();
   const visible = projects.filter(p => currentFilter === 'all' || p.categories.includes(currentFilter));
+  const applied=visible.filter(p=>!seriesIds.has(p.id));
+  const modules=visible.filter(p=>seriesIds.has(p.id));
   grid.classList.toggle('is-filtered',currentFilter!=='all');
-  grid.style.setProperty('--project-count',String(Math.min(visible.length,3)));
-  visible.forEach(project => {
+  applied.forEach(project => {
     const study=caseStudies[project.id];
-    const card = element('article', 'project-card');card.id=`work-${project.id}`;
+    const card = element('article', 'project-card project-entry');card.id=`work-${project.id}`;
     const body = element('div', 'project-body');
     const heading = element('h3'); titleText(heading, project.title[language]);
-    const button = element('button', 'project-detail'); button.type = 'button';
-    button.append(element('span', '', copy[language].details), element('span', '', '↗'));
-    button.setAttribute('aria-label', `${copy[language].details}: ${project.title[language].replace('\n',' ')}`);
-    button.addEventListener('click', () => openProject(project,button));
-    const problem=element('div','case-card-section');problem.append(element('span','case-card-label',copy[language].pain),element('p','project-pain',study.pain[language]));
-    const role=element('div','case-card-section');role.append(element('span','case-card-label',copy[language].contribution),element('p','project-role',study.roleSummary[language]));
-    const publicArtifacts=study.artifacts.filter(asset=>asset.status==='published'&&asset.url);
+    const problem=projectCardSection(copy[language].pain,study.pain[language],'project-pain');
+    const role=projectCardSection(copy[language].contribution,study.roleSummary[language],'project-role');
     const metric=element('div','project-metric');metric.append(element('span','metric-kind',copy[language].scopeLabel),element('span','',project.metric[language]));
-    body.append(element('div', 'project-category', project.label), heading, element('div','project-scope',project.scope[language]),problem,role,metric,element('div','case-evidence-status',publicArtifacts.length?copy[language].evidenceReady:copy[language].evidenceStatus),tags(project.tags), button);
+    body.append(element('div', 'project-category', project.label), heading, element('div','project-scope',project.scope[language]),problem,role,metric,tags(project.tags),projectDetailButton(project));
     card.append(projectArt(project.art, project.number), body); grid.append(card);
   });
-  $('#project-status').textContent = copy[language].shown(visible.length);
+  if(modules.length){
+    const series=element('article','forage-series');
+    const header=element('div','series-header');
+    const heading=element('div','series-heading');
+    heading.append(element('span','mono series-eyebrow',copy[language].seriesEyebrow),element('h3','',copy[language].seriesTitle),element('p','series-subtitle',copy[language].seriesSubtitle));
+    const intro=element('div','series-intro');
+    const demo=element('a','text-link series-demo',copy[language].seriesDemo);demo.href='#gas-lab';
+    intro.append(element('p','',copy[language].seriesIntro),element('span','mono series-context',copy[language].seriesContext),demo);
+    header.append(heading,intro);
+    const details=element('details','series-details');details.open=seriesOpen;
+    const summary=element('summary');summary.append(element('span','',copy[language].seriesMore(modules.length)),element('span','series-chevron','+'));
+    details.append(summary);const list=element('div','series-modules');
+    modules.forEach(project=>{
+      const study=caseStudies[project.id];const module=element('article','series-module project-entry');module.id=`work-${project.id}`;
+      const meta=element('div','module-heading');
+      meta.append(element('span','mono module-number',`${copy[language].seriesTask} ${copy[language].seriesModules[project.id]}`),element('h4','',project.title[language].replace('\n',' ')));
+      const body=element('div','module-body');
+      body.append(projectCardSection(copy[language].pain,study.pain[language],'project-pain'),projectCardSection(copy[language].contribution,study.roleSummary[language],'project-role'));
+      const metric=element('div','project-metric');metric.append(element('span','metric-kind',copy[language].scopeLabel),element('span','',project.metric[language]));
+      body.append(metric,projectDetailButton(project));module.append(meta,body);list.append(module);
+    });
+    details.append(list);details.addEventListener('toggle',()=>{if(details.isConnected)seriesOpen=details.open;});
+    series.append(header,details);grid.append(series);
+  }
+  $('#project-status').textContent = copy[language].groupedShown(visible.length,applied.length+(modules.length?1:0));
 }
 function artifactUrl(value){
   if(typeof value!=='string'||!value.trim())return null;
@@ -175,6 +222,10 @@ function renderDialog() {
   content.append(element('div', 'project-category', p.label),title,element('p','detail-context',p.context[language]),element('h3','',copy[language].pain),element('p','case-question',study.pain[language]),element('h3','',copy[language].contribution),contributions);
   if(judgment.childElementCount)content.append(judgment);
   content.append(ownership,element('h3','',copy[language].method),methods,results,renderCaseEvidence(study),element('h3','',copy[language].tools),tags(p.tags),source);
+  if(p.id==='gas-forecast'){
+    const followup=element('a','button button-primary case-followup',copy[language].gasFollowup);followup.href='#gas-lab';
+    followup.addEventListener('click',()=>{nextDialogFocus=document.getElementById('gas-lab');dialog.close();});content.append(followup);
+  }
   title.id = 'dialog-title'; $('#project-dialog').setAttribute('aria-labelledby', title.id);
 }
 function renderExperience() {
@@ -223,7 +274,7 @@ function setLanguage() {
   $('#language-toggle').setAttribute('aria-label', language === 'en' ? '切换到中文' : 'Switch to English');
   $('#close-dialog').setAttribute('aria-label', copy[language].close);
   document.title = language === 'en' ? 'Ruixi Feng — Quant × Technology × Business' : 'Ruixi Feng — 量化 × 技术 × 商业分析';
-  renderEvidence();renderFocus(); renderProjects(); renderExperience(); renderSkills(); renderDialog(); syncMotionButton(); syncMenuLabel();
+  renderEvidence();renderFocus(); renderProjects(); renderExperience(); renderSkills(); renderDialog(); syncMotionButton(); syncMenuLabel();setGasLabLanguage(language);
 }
 $('#language-toggle').addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; persist('rf-language',language); setLanguage(); });
 $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
@@ -238,7 +289,7 @@ $('#year').textContent = new Date().getFullYear();
 const dialog = $('#project-dialog');
 $('#close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); });
-dialog.addEventListener('close', () => { document.body.style.overflow = ''; lastProjectButton?.focus(); activeProject = null; });
+dialog.addEventListener('close', () => { document.body.style.overflow = ''; (nextDialogFocus||lastProjectButton)?.focus({preventScroll:true});nextDialogFocus=null;activeProject = null; });
 
 function syncMenuLabel() { $('#menu-toggle').setAttribute('aria-label', copy[language][$('#menu-toggle').getAttribute('aria-expanded') === 'true' ? 'menuClose' : 'menuOpen']); }
 function closeMenu() { $('#navigation').classList.remove('is-open'); $('#menu-toggle').setAttribute('aria-expanded','false'); syncMenuLabel(); }
@@ -335,4 +386,5 @@ visual.addEventListener('pointerleave',()=>{pointer={x:0,y:0};});
 document.addEventListener('visibilitychange',syncAnimation);
 new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;syncAnimation();},{threshold:0}).observe(visual);
 new ResizeObserver(resizeCanvas).observe(visual);
-setLanguage(); resizeCanvas(); syncAnimation();updateProgress();
+setLanguage();initGasLab(language);resizeCanvas();syncAnimation();updateProgress();revealHashModule();
+window.addEventListener('hashchange',revealHashModule);
