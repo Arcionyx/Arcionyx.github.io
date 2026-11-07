@@ -66,4 +66,4 @@ Original attachments and evidence links remain withheld. Only the authorized por
 
 ## Homepage portrait
 
-The owner explicitly requested publication of the supplied personal photo on the homepage. The JPEG is included as `assets/ruixi-feng-portrait.jpg` without changing its pixels or aspect ratio. It is shown in a separate frame over a decorative signal background; the perspective buttons sit below the frame. The earlier restriction on project documents, datasets, and evidence links remains in effect.
+The owner explicitly requested publication of the supplied personal photo, then asked to move it into About as a small circular avatar while restoring the full hero signal sphere. The JPEG remains unchanged as `assets/ruixi-feng-portrait.jpg`; CSS supplies the circular display and framing. The avatar is 128 px on desktop and 96 px on mobile. The earlier restriction on project documents, datasets, and evidence links remains in effect.
