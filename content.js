@@ -51,38 +51,7 @@ export const focus = [
   { symbol: '↗', title: {en:'Business insight',zh:'商业洞察'}, body:{en:'Framing business questions, defining useful KPIs, and translating findings into decisions.',zh:'界定商业问题，设计有意义的 KPI，让分析结果支持决策。'},tags:['Strategy','Excel','Operations'] },
 ];
 
-export const projects = [
-  {
-    id:'quant-research', categories:['quant'], art:'signal', label:'QUANTITATIVE RESEARCH', number:'01',
-    title:{en:'Modeling patterns.\nUnderstanding risk.',zh:'识别价格规律，\n理解信用风险。'},
-    summary:{en:'Time-series forecasting and credit-risk modeling in the J.P. Morgan Quantitative Research Job Simulation.',zh:'在 J.P. Morgan 量化研究职业模拟中，探索时间序列预测与信用风险建模。'},
-    tags:['Python','Time series','Credit risk'],
-    context:{en:'JPMorgan Chase & Co. Quantitative Research Job Simulation via Forage · December 2025. This is a learning simulation, not employment at JPMorgan or a live trading strategy.',zh:'JPMorgan Chase & Co. Quantitative Research Job Simulation，Forage · 2025 年 12 月。此项目为学习性质的职业模拟。'},
-    points:{en:['Used 48 monthly natural-gas price observations to study seasonality and forecast prices one year ahead.','Built a credit-risk model using 10,000 borrower records to estimate default probability and expected loan loss.','Applied dynamic programming and maximum-likelihood optimization to group FICO scores into 10 credit-risk buckets.'],zh:['使用 48 个月度天然气价格观测，分析季节性并预测未来一年的价格。','基于 10,000 条借款人记录建立信用风险模型，估算违约概率与预期贷款损失。','应用动态规划与最大似然优化，将 FICO 分数映射至 10 个信用风险分组。']},
-  },
-  {
-    id:'commerce-systems', categories:['it','ba'], art:'system', label:'TECHNOLOGY / OPERATIONS', number:'02',
-    title:{en:'From operational data\nto better workflows.',zh:'从运营数据，\n走向更好的工作流。'},
-    summary:{en:'Product analysis, reporting, and automation prototypes for e-commerce operations at Ningbo Jingte.',zh:'在宁波 Jingte 电商运营中，开展商品分析、业务报告与自动化原型构建。'},
-    tags:['Python','JavaScript','Excel'],
-    context:{en:'Work completed during an E-commerce Operations and Data Analyst internship at Ningbo Jingte E-Business Co., Ltd. · May–July 2026.',zh:'宁波 Jingte E-Business Co., Ltd. 电商运营与数据分析实习期间的工作 · 2026 年 5–7 月。'},
-    points:{en:['Analyzed pricing, advertising, customer feedback, and competitor activity across 1,700+ product listings using Excel.','Prepared weekly reporting on product content, pricing, advertising, competitor research, and new-product opportunities.','Identified fulfillment bottlenecks and prototyped dashboards, data-cleaning scripts, databases, and workflow automation with Python and JavaScript.'],zh:['使用 Excel 分析 1,700 多条商品刊登的定价、广告表现、客户反馈与竞品活动。','围绕商品内容、定价、广告、竞品研究和新品机会，制作每周表现报告。','识别履约瓶颈，并使用 Python 和 JavaScript 制作看板、数据清洗脚本、数据库和工作流自动化原型。']},
-  },
-  {
-    id:'disney-strategy', categories:['ba'], art:'orbit', label:'BUSINESS / STRATEGY', number:'03',
-    title:{en:'Turning strategy\ninto a decision framework.',zh:'把战略分析，\n转化为决策框架。'},
-    summary:{en:'An independent Disney capital-allocation study connecting 10-K research, strategic options, and decision KPIs.',zh:'通过 Disney 独立资本配置研究，连接 10-K 财报、战略选项与决策 KPI。'},
-    tags:['SQL','Financial analysis','Strategy'],
-    context:{en:'Independent Disney strategy project described in the supplied resume under the McKinsey & Company Business Analytics internship · December 2025–March 2026. Mentor feedback informed the analysis.',zh:'简历中记录于 McKinsey & Company 商业分析实习项下的 Disney 独立战略项目 · 2025 年 12 月–2026 年 3 月，并通过导师反馈完善分析。'},
-    points:{en:['Developed a structured view of Disney’s business using its 10-K and a capital-allocation perspective.','Compared three allocation options over a three-to-five-year horizon across Experiences, streaming, and linear TV.','Used DTC margin, Experiences ROIC, and free-cash-flow growth as decision KPIs; translated research into an executive-style presentation.'],zh:['基于 Disney 10-K 财报，从资本配置角度梳理业务结构。','围绕体验业务、流媒体和线性电视，比较 3 项资本配置方案及其 3–5 年影响。','将 DTC 利润率、体验业务 ROIC 和自由现金流增长设为决策 KPI，并整理成面向管理层的演示材料。']},
-  },
-];
-
-export const experience = [
-  {date:'MAY — JUL 2026',type:{en:'INTERNSHIP',zh:'实习'},title:{en:'E-commerce Operations & Data Analyst',zh:'电商运营与数据分析实习生'},company:'Ningbo Jingte E-Business Co., Ltd. · Ningbo, China',points:{en:['Analyzed 1,700+ product listings and produced weekly performance reports.','Prototyped data-cleaning and workflow automation tools with Python and JavaScript.'],zh:['分析 1,700 多条商品刊登，并制作每周表现报告。','使用 Python 和 JavaScript 制作数据清洗与工作流自动化原型。']}},
-  {date:'DEC 2025 — MAR 2026',type:{en:'INTERNSHIP',zh:'实习'},title:{en:'Business Analytics Intern',zh:'商业分析实习生'},company:'McKinsey & Company · Boston, MA',points:{en:['Led an independent Disney strategy study, from 10-K analysis to capital-allocation recommendations.','Evaluated strategic options and refined an executive-style deck through mentor feedback.'],zh:['完成从 10-K 财报分析到资本配置建议的 Disney 独立战略研究。','比较战略选项，并通过导师反馈完善管理层风格的演示材料。']}},
-  {date:'JUN — AUG 2024',type:{en:'VOLUNTEERING',zh:'志愿经历'},title:{en:'International Volunteer',zh:'国际志愿者'},company:'World Society for Natural Conservation',points:{en:['Supported environmental awareness and natural-conservation initiatives.','Developed communication and problem-solving skills through sustainability-focused activities.'],zh:['参与环境意识宣传和自然保护相关活动。','通过可持续发展主题活动，锻炼沟通与问题解决能力。']}},
-];
+export { projects, experience } from './profile.js?v=2';
 
 export const skills = [
   {label:{en:'PROGRAMMING & ANALYTICS',zh:'编程与分析'},items:['Python','SQL','Excel','JavaScript']},

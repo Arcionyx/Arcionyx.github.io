@@ -1,11 +1,18 @@
-import { copy, focus, projects, experience, skills, credentials } from './content.js';
+import { copy, projects, experience, skills, credentials } from './content.js?v=2';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=2';
+
+Object.assign(copy.en, extendedCopy.en);
+Object.assign(copy.zh, extendedCopy.zh);
 
 const $ = (s, parent = document) => parent.querySelector(s);
 const $$ = (s, parent = document) => [...parent.querySelectorAll(s)];
 const saved = key => { try { return localStorage.getItem(key); } catch { return null; } };
 const persist = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Storage is optional. */ } };
-let language = saved('rf-language') === 'zh' ? 'zh' : 'en';
+const preferredLanguage=saved('rf-language');
+let language=['en','zh'].includes(preferredLanguage)?preferredLanguage:navigator.language.toLowerCase().startsWith('zh')?'zh':'en';
 let currentFilter = 'all';
+let currentJourney = 'all';
+let currentLens = 'quant';
 let activeProject = null;
 let lastProjectButton = null;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -30,15 +37,52 @@ function titleText(node, text) {
     node.append(index === lines.length - 1 && lines.length > 1 && node.tagName === 'H2' ? element('em', '', line) : document.createTextNode(line));
   });
 }
+function openProject(project, opener) {
+  activeProject = project; lastProjectButton = opener;
+  renderDialog(); $('#project-dialog').showModal(); document.body.style.overflow = 'hidden';
+}
+function projectButton(projectId, label, className='text-link') {
+  const button = element('button', className, label); button.type = 'button';
+  button.addEventListener('click', () => openProject(projects.find(project => project.id === projectId), button));
+  return button;
+}
+function renderEvidence() {
+  const grid = $('#evidence-grid'); grid.replaceChildren();
+  evidence.forEach(item => {
+    const link = element('a', 'evidence-item'); link.href = `#work-${item.project}`;
+    link.addEventListener('click',()=>setProjectFilter('all'));
+    link.append(element('span', 'evidence-value', item.value),element('span', 'evidence-description', item.label[language]),element('span', 'evidence-context', `${item.context[language]} ↗`));
+    grid.append(link);
+  });
+}
+function setProjectFilter(value){
+  currentFilter=value;
+  $$('[data-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.filter===value)));
+  renderProjects();updateProgress();
+}
+function selectLens(id, moveFocus=false) {
+  currentLens=id; renderFocus();
+  if(moveFocus) $(`#lens-tab-${id}`).focus();
+}
 function renderFocus() {
   const grid = $('#focus-grid'); grid.replaceChildren();
-  focus.forEach((item, index) => {
-    const card = element('article', 'focus-item');
-    const number = element('div', 'focus-number');
-    number.append(element('span', '', `0${index + 1}`), element('span', 'focus-symbol', item.symbol));
-    card.append(number, element('h3', '', item.title[language]), element('p', '', item.body[language]), tags(item.tags));
-    grid.append(card);
+  grid.append(element('div','mono lens-label',copy[language].lensLabel));
+  const tabs=element('div','lens-tabs'); tabs.setAttribute('role','tablist'); tabs.setAttribute('aria-label',copy[language].lensLabel);
+  perspectives.forEach((item,index)=>{
+    const tab=element('button','lens-tab');tab.type='button';tab.id=`lens-tab-${item.id}`;
+    tab.append(element('span','',`0${index+1}`),element('strong','',['QUANT','IT / SYSTEMS','BUSINESS ANALYTICS'][index]));
+    tab.setAttribute('role','tab');tab.setAttribute('aria-controls','perspective-panel');tab.setAttribute('aria-selected',String(currentLens===item.id));tab.tabIndex=currentLens===item.id?0:-1;
+    tab.addEventListener('click',()=>selectLens(item.id,true));
+    tab.addEventListener('keydown',event=>{
+      const next=event.key==='ArrowRight'?(index+1)%3:event.key==='ArrowLeft'?(index+2)%3:event.key==='Home'?0:event.key==='End'?2:null;
+      if(next!==null){event.preventDefault();selectLens(perspectives[next].id,true);}
+    });tabs.append(tab);
   });
+  const item=perspectives.find(item=>item.id===currentLens);
+  const panel=element('div','lens-panel');panel.id='perspective-panel';panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby',`lens-tab-${item.id}`);panel.tabIndex=0;
+  const visual=element('div',`lens-visual lens-${item.id}`);visual.setAttribute('aria-hidden','true');visual.append(element('span','lens-symbol',item.symbol),element('span','mono',item.subtitle[language]));
+  const body=element('div','lens-body');body.append(element('h3','',item.title[language]),element('p','',item.body[language]),element('div','lens-proof',item.proof[language]),tags(item.tags),projectButton(item.project,`${copy[language].lensProject} ↗`));
+  panel.append(visual,body);grid.append(tabs,panel);
 }
 
 function projectArt(type, number) {
@@ -49,6 +93,8 @@ function projectArt(type, number) {
     signal: `<svg viewBox="0 0 360 220" fill="none"><defs><linearGradient id="line-glow"><stop stop-color="#4a75fb"/><stop offset="1" stop-color="#78f0e0"/></linearGradient><linearGradient id="line-fill" x2="0" y2="1"><stop stop-color="#4688ef" stop-opacity=".26"/><stop offset="1" stop-color="#4688ef" stop-opacity="0"/></linearGradient></defs><path d="M0 55H360M0 95H360M0 135H360M0 175H360M40 30V200M100 30V200M160 30V200M220 30V200M280 30V200M340 30V200" stroke="#86b1e7" stroke-opacity=".07"/><path d="M0 173 25 167 46 178 67 143 88 153 110 118 130 129 150 102 170 119 190 88 214 99 238 64 256 81 281 47 302 65 327 39 360 46V220H0Z" fill="url(#line-fill)"/><path d="M0 173 25 167 46 178 67 143 88 153 110 118 130 129 150 102 170 119 190 88 214 99 238 64 256 81 281 47 302 65 327 39 360 46" stroke="url(#line-glow)" stroke-width="2"/><path d="M0 185Q100 180 175 128T360 85" stroke="#6398ff" stroke-opacity=".35" stroke-dasharray="4 5"/><circle cx="238" cy="64" r="4" fill="#86efef"/><circle cx="238" cy="64" r="12" stroke="#86efef" stroke-opacity=".3"/></svg>`,
     system: `<svg viewBox="0 0 360 220" fill="none"><path d="M72 110H130M230 110H288M180 54V80M180 140V169M103 65 148 91M211 129 257 158M103 158 148 129M211 91 257 65" stroke="#5388d7" stroke-width="1.2"/><path d="M70 110H132M230 110H288" stroke="#67d9e8" stroke-dasharray="3 12"/><g fill="#0d1e35" stroke="#3b6096"><rect x="135" y="80" width="90" height="60" rx="8"/><rect x="43" y="95" width="38" height="30" rx="5"/><rect x="280" y="95" width="38" height="30" rx="5"/><rect x="161" y="30" width="38" height="30" rx="5"/><rect x="161" y="163" width="38" height="30" rx="5"/><circle cx="98" cy="62" r="12"/><circle cx="98" cy="162" r="12"/><circle cx="262" cy="62" r="12"/><circle cx="262" cy="162" r="12"/></g><path d="m167 100-10 10 10 10m26-20 10 10-10 10m-8-23-10 26" stroke="#73c5ff" stroke-width="2"/><g fill="#66dbeb"><circle cx="98" cy="62" r="3"/><circle cx="262" cy="162" r="3"/><circle cx="180" cy="45" r="3"/></g><rect x="129" y="74" width="102" height="72" rx="11" stroke="#4c8ef0" stroke-opacity=".18"/></svg>`,
     orbit: `<svg viewBox="0 0 360 220" fill="none"><circle cx="180" cy="111" r="71" stroke="#3d69a5" stroke-opacity=".3"/><circle cx="180" cy="111" r="48" stroke="#3d69a5" stroke-opacity=".2"/><path d="M180 111 239 70M180 111 108 130M180 111 224 169" stroke="#497dc4"/><circle cx="180" cy="111" r="25" fill="#18365c" stroke="#6aa7ff"/><circle cx="239" cy="70" r="16" fill="#10273f" stroke="#63d9e5"/><circle cx="108" cy="130" r="21" fill="#152746" stroke="#6c91e8"/><circle cx="224" cy="169" r="12" fill="#172842" stroke="#7596d7"/><path d="M180 40a71 71 0 0 1 66 96" stroke="#6aafff" stroke-width="2"/><circle cx="180" cy="40" r="3" fill="#84c7ff"/><text x="180" y="115" text-anchor="middle" font-family="monospace" font-size="11" fill="#9dd3ff">KPI</text><path d="M280 46h25m-25 7h14M54 170h25m-25 7h14" stroke="#52749e" stroke-opacity=".6"/></svg>`,
+    risk: `<svg viewBox="0 0 360 220" fill="none"><path d="M50 178H315M50 50V178" stroke="#416390" stroke-opacity=".5"/><path d="M50 162C100 162 110 156 139 139S178 67 215 62 262 60 315 59" stroke="#71dbe6" stroke-width="2"/><path d="M50 162C100 162 110 156 139 139S178 67 215 62 262 60 315 59V178H50Z" fill="#549bff" fill-opacity=".09"/><path d="M180 54V178" stroke="#73aafa" stroke-dasharray="4 5" stroke-opacity=".4"/><circle cx="180" cy="88" r="5" fill="#7be4ef"/><text x="65" y="64" fill="#9dc5f4" font-size="11" font-family="monospace">P(default)</text><text x="277" y="196" fill="#6d8daf" font-size="8" font-family="monospace">RISK</text><g fill="#779fe0" fill-opacity=".6"><circle cx="77" cy="159" r="2"/><circle cx="113" cy="151" r="2"/><circle cx="153" cy="124" r="2"/><circle cx="226" cy="65" r="2"/><circle cx="280" cy="58" r="2"/></g></svg>`,
+    buckets: `<svg viewBox="0 0 360 220" fill="none"><path d="M40 177H320" stroke="#416390"/><g fill="#4675bb" fill-opacity=".4" stroke="#73adff" stroke-opacity=".45">${Array.from({length:10},(_,i)=>`<rect x="${43+i*28}" y="${146-i*9}" width="19" height="${31+i*9}" rx="2"/>`).join('')}</g><path d="M43 132 71 123 99 114 127 105 155 96 183 87 211 78 239 69 267 60 295 51" stroke="#79dbe5" stroke-width="1.5" stroke-dasharray="3 4"/><text x="44" y="198" fill="#819ec6" font-size="9" font-family="monospace">01</text><text x="295" y="198" fill="#819ec6" font-size="9" font-family="monospace">10</text></svg>`,
   };
   box.innerHTML = artwork[type];
   const caption = element('div', 'art-caption');
@@ -60,15 +106,17 @@ function projectArt(type, number) {
 function renderProjects() {
   const grid = $('#project-grid'); grid.replaceChildren();
   const visible = projects.filter(p => currentFilter === 'all' || p.categories.includes(currentFilter));
+  grid.classList.toggle('is-filtered',currentFilter!=='all');
+  grid.style.setProperty('--project-count',String(Math.min(visible.length,3)));
   visible.forEach(project => {
-    const card = element('article', 'project-card');
+    const card = element('article', 'project-card');card.id=`work-${project.id}`;
     const body = element('div', 'project-body');
     const heading = element('h3'); titleText(heading, project.title[language]);
     const button = element('button', 'project-detail'); button.type = 'button';
     button.append(element('span', '', copy[language].details), element('span', '', '↗'));
     button.setAttribute('aria-label', `${copy[language].details}: ${project.title[language].replace('\n',' ')}`);
-    button.addEventListener('click', () => { activeProject = project; lastProjectButton = button; renderDialog(); $('#project-dialog').showModal(); document.body.style.overflow = 'hidden'; });
-    body.append(element('div', 'project-category', project.label), heading, element('p', '', project.summary[language]), tags(project.tags), button);
+    button.addEventListener('click', () => openProject(project,button));
+    body.append(element('div', 'project-category', project.label), heading, element('div','project-scope',project.scope[language]),element('p', '', project.summary[language]),element('div','project-metric',project.metric[language]), tags(project.tags), button);
     card.append(projectArt(project.art, project.number), body); grid.append(card);
   });
   $('#project-status').textContent = copy[language].shown(visible.length);
@@ -80,19 +128,22 @@ function renderDialog() {
   const points = element('ul'); p.points[language].forEach(point => points.append(element('li', '', point)));
   const source = element('a', 'source-link', copy[language].source);
   source.href = 'https://www.linkedin.com/in/ruixifeng777'; source.target = '_blank'; source.rel = 'noopener noreferrer';
-  content.append(element('div', 'project-category', p.label), title, element('p', 'detail-context', p.context[language]), element('h3', '', copy[language].approach), points, element('h3', '', copy[language].tools), tags(p.tags), source);
+  content.append(element('div', 'project-category', p.label), title,element('div','case-metric',p.metric[language]), element('p', 'detail-context', p.context[language]),element('h3','',copy[language].question),element('p','case-question',p.question[language]), element('h3', '', copy[language].approach), points,element('h3','',copy[language].takeaway),element('p','',p.takeaway[language]), element('h3', '', copy[language].tools), tags(p.tags), source);
   title.id = 'dialog-title'; $('#project-dialog').setAttribute('aria-labelledby', title.id);
 }
 function renderExperience() {
   const timeline = $('#timeline'); timeline.replaceChildren();
-  experience.forEach(item => {
+  const visible=experience.filter(item=>currentJourney==='all'||item.group===currentJourney);
+  visible.forEach(item => {
     const article = element('article', 'timeline-item');
     const content = element('div'); const meta = element('div', 'timeline-meta');
     meta.append(element('span', '', item.date), element('span', 'timeline-type', item.type[language]));
     const list = element('ul'); item.points[language].forEach(point => list.append(element('li', '', point)));
-    content.append(meta, element('h3', '', item.title[language]), element('p', 'timeline-company', item.company), list);
+    content.append(meta, element('h3', '', item.title[language]), element('p', 'timeline-company', item.company),element('p','timeline-intro',item.intro[language]), list,tags(item.tags));
+    if(item.project)content.append(projectButton(item.project,`${copy[language].details} ↗`,'timeline-project'));
     article.append(element('span', 'timeline-dot'), content); timeline.append(article);
   });
+  $('#journey-status').textContent=copy[language].journeyShown(visible.length);
 }
 function renderSkills() {
   const groups = $('#skill-groups'); groups.replaceChildren();
@@ -101,11 +152,22 @@ function renderSkills() {
     group.items.forEach(item => chips.append(element('span', '', item)));
     section.append(element('h3', '', group.label[language]), chips); groups.append(section);
   });
-  $('#credentials').replaceChildren(); $('#extra-credentials').replaceChildren();
-  credentials.forEach((credential, index) => {
-    const node = element('article', 'credential');
-    node.append(element('h3', '', credential.name), element('p', '', [credential.issuer,credential.date].filter(Boolean).join(' · ')));
-    $(index < 4 ? '#credentials' : '#extra-credentials').append(node);
+  $('#coursework').replaceChildren();
+  coursework.forEach(group=>{
+    const row=element('div','coursework-row');row.append(element('span','',group.title[language]),element('p','',group.items[language].join(' / ')));$('#coursework').append(row);
+  });
+  const learning=$('#learning-groups');learning.replaceChildren();
+  learningGroups.forEach(group=>{
+    const card=element('article','learning-card');const number=element('div','learning-symbol',group.symbol);number.setAttribute('aria-hidden','true');
+    const details=element('details','learning-details');const summary=element('summary','',copy[language].certificateMore(group.indices.length));details.append(summary);
+    group.indices.forEach(index=>{const credential=credentials[index];const node=element('div','credential');node.append(element('h4','',credential.name),element('p','',[credential.issuer,credential.date].filter(Boolean).join(' · ')));details.append(node);});
+    card.append(number,element('h3','',group.title[language]),element('p','',group.intro[language]),element('div','learning-highlight',credentials[group.indices[0]].name),details);learning.append(card);
+  });
+  const personal=$('#personal-grid');personal.replaceChildren();
+  personalInterests.forEach(item=>{
+    const card=element('article',`personal-card personal-${item.id}`);
+    const art=element('div','personal-art',item.id==='creative'?'⌁':item.id==='markets'?'↗':'◎');art.setAttribute('aria-hidden','true');
+    card.append(art,element('span','mono personal-number',item.number),element('h3','',item.title[language]),element('div','personal-subtitle',item.subtitle[language]),element('p','',item.body[language]));personal.append(card);
   });
 }
 function setLanguage() {
@@ -115,14 +177,17 @@ function setLanguage() {
   $('#language-toggle').setAttribute('aria-label', language === 'en' ? '切换到中文' : 'Switch to English');
   $('#close-dialog').setAttribute('aria-label', copy[language].close);
   document.title = language === 'en' ? 'Ruixi Feng — Quant × Technology × Business' : 'Ruixi Feng — 量化 × 技术 × 商业分析';
-  renderFocus(); renderProjects(); renderExperience(); renderSkills(); renderDialog(); syncMotionButton(); syncMenuLabel();
+  renderEvidence();renderFocus(); renderProjects(); renderExperience(); renderSkills(); renderDialog(); syncMotionButton(); syncMenuLabel();
 }
 $('#language-toggle').addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; persist('rf-language',language); setLanguage(); });
 $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
-  currentFilter = button.dataset.filter;
-  $$('[data-filter]').forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
-  renderProjects();
+  setProjectFilter(button.dataset.filter);
 }));
+$$('[data-journey]').forEach(button=>button.addEventListener('click',()=>{currentJourney=button.dataset.journey;$$('[data-journey]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));renderExperience();updateProgress();}));
+$$('[data-lens]').forEach(button=>button.addEventListener('click',()=>{selectLens(button.dataset.lens);$('#focus-grid').scrollIntoView({behavior:motionEnabled?'smooth':'auto',block:'start'});$(`#lens-tab-${currentLens}`).focus({preventScroll:true});}));
+function updateProgress(){const range=document.documentElement.scrollHeight-window.innerHeight;$('#reading-progress').style.transform=`scaleX(${range>0?window.scrollY/range:0})`;}
+window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);
+document.addEventListener('toggle',updateProgress,true);
 $('#year').textContent = new Date().getFullYear();
 const dialog = $('#project-dialog');
 $('#close-dialog').addEventListener('click', () => dialog.close());
@@ -224,4 +289,4 @@ visual.addEventListener('pointerleave',()=>{pointer={x:0,y:0};});
 document.addEventListener('visibilitychange',syncAnimation);
 new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;syncAnimation();},{threshold:0}).observe(visual);
 new ResizeObserver(resizeCanvas).observe(visual);
-setLanguage(); resizeCanvas(); syncAnimation();
+setLanguage(); resizeCanvas(); syncAnimation();updateProgress();
