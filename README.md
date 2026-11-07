@@ -18,11 +18,9 @@ Open http://localhost:3000. The `dist/` directory contains the complete deployab
 - `app.js`: filtering, project dialogs, language switching, and animation.
 - `docs/content-sources.md`: what was read from LinkedIn and what was supplemented from the supplied resume.
 
-## Connect GitHub
+## GitHub & deployment
 
-The initial workspace was authenticated as **Arcionyx**, but `gh repo create` returned `Resource not accessible by integration (createRepository)`. No remote repository has been created or modified.
-
-Create an empty repository at https://github.com/new named `Arcionyx.github.io` (without initializing a README). Start private if you want to review the source first. Share the repository URL with the assistant so it can commit and push this prepared source through the connected GitHub account.
+Source repository: https://github.com/Arcionyx/Arcionyx.github.io
 
 The included `.github/workflows/pages.yml` builds and deploys the site when GitHub Pages is enabled with **GitHub Actions** as the source. GitHub Pages availability for private repositories depends on the account plan; public repositories can use Pages on GitHub Free. Review visibility before changing it.
 
