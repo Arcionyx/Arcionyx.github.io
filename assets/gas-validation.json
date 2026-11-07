@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "evaluationDate": "2026-11-07",
+  "attribution": "New AI-assisted follow-up reproduction; not the original Forage submission or historical performance.",
+  "data": {
+    "rowCount": 48,
+    "start": "2020-10-31",
+    "end": "2024-09-30",
+    "sha256": "ec8eb18340c7bd24c92b4307325bdcc1f285cdf9e452c3dbad5133527c64722f",
+    "publicRowsIncluded": false,
+    "units": "price units from the supplied CSV"
+  },
+  "method": "Joint least-squares intercept, linear time trend, annual sine and cosine; fixed before evaluation. No tuning on test values.",
+  "holdout": {
+    "trainStart": "2020-10-31",
+    "trainEnd": "2023-09-30",
+    "trainN": 36,
+    "testStart": "2023-10-31",
+    "testEnd": "2024-09-30",
+    "testN": 12,
+    "horizon": "One fixed 12-month forecast; the model is not refitted inside the test period.",
+    "model": {
+      "mae": 0.16042062156454406,
+      "rmse": 0.20836910981446136
+    },
+    "seasonalNaive": {
+      "mae": 0.5666666666666669,
+      "rmse": 0.6271629240742261
+    }
+  },
+  "rolling": {
+    "initialTrainN": 24,
+    "testN": 24,
+    "horizon": "Expanding-window one-month forecasts, refit using only earlier observations.",
+    "model": {
+      "mae": 0.1720890948447571,
+      "rmse": 0.2199698426781205
+    },
+    "seasonalNaive": {
+      "mae": 0.5666666666666668,
+      "rmse": 0.621825270205921
+    }
+  },
+  "limitations": [
+    "One small historical educational series; this is not evidence of live-market forecasting performance.",
+    "Original price records remain private; the public demo uses separately generated synthetic inputs.",
+    "No prediction interval or trading return is estimated."
+  ],
+  "verification": {
+    "nodeTestsPassed": 27,
+    "nodeTestsFailed": 0,
+    "independentCheck": "Eight MAE/RMSE values independently recomputed with NumPy least squares; absolute difference below 1e-9.",
+    "checkedDate": "2026-11-07"
+  }
+}
