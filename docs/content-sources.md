@@ -27,3 +27,13 @@ The Rutgers Table Tennis Club member entry (September 2025–May 2026), includin
 The expanded first-person narrative is editorial wording connecting the owner's documented interests and activities. It does not add new employment, formal degrees, language proficiency levels, investment results, publications, or personal recommendations.
 
 Design structure was informed by the official personal websites of Brittany Chiang, Andrej Karpathy, Josh W. Comeau, and Bruno Simon. Their biographical claims and creative assets are not used as this owner's content.
+
+## Contribution and evidence edition
+
+The owner requested separate personal contribution, problem, method, outcome, and evidence sections for every project. The owner then clarified that contribution materials will be supplied later, public evidence links should not be posted yet, and quantitative validation results are not available.
+
+The current contribution descriptions therefore remain limited to the resume's reported activities. The Disney study's independent-work description and mentor feedback are retained. File-level authorship, starter-code reuse, team responsibilities, independently derived findings, and validation ownership remain unresolved until contribution materials are reviewed.
+
+All original project artifact slots are withheld from public linking. Four possible artifact categories are displayed; the absence of public links does not establish that each artifact category exists. No dataset sample, report, video, source repository, or reproduction package has been invented or attached as proof of original work. Existing cover graphics remain explicitly conceptual.
+
+The private working checklist is outside the repository and deployment bundle. Future review of owner-supplied files is for contribution attribution; it is not authorization to publish the raw files.

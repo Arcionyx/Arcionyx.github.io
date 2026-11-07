@@ -15,6 +15,7 @@ Open http://localhost:3000. The `dist/` directory contains the complete deployab
 
 - `content.js`: shared bilingual copy, credentials, skills, and project/experience exports.
 - `profile.js`: expanded bilingual narrative, case studies, journey entries, evidence, coursework, and personal interests.
+- `case-studies.js`: project problems, personal contributions and ownership boundaries, methods, reported deliverables, validation limits, and artifact publication status. Evidence links are currently withheld at the owner's request.
 - `styles.css`: colors, spacing, responsive layouts, and reduced-motion support.
 - `upgrade.css`: perspective explorer, case-study layout, education, learning groups, and personal sections.
 - `app.js`: filtering, project dialogs, language switching, and animation.
@@ -40,3 +41,9 @@ Live website: https://arcionyx.github.io/
 - https://bruno-simon.com/ — interaction as part of a personal identity; this site keeps its lightweight original wireframe rather than adopting a 3D game.
 
 These are organizational references. No biography, testimonials, project outcomes, code, or assets were copied from them.
+
+## Project evidence
+
+Project scope figures are labeled separately from measured outcomes. The owner has not supplied quantitative validation results for publication. No model accuracy, financial return, or operational improvement percentage is inferred from record counts, listing counts, or the number of risk buckets.
+
+Project attachments and evidence links are currently withheld. Files provided later for contribution review must not be added to the public deployment without the owner's release instruction. Published artifacts need a real HTTPS URL and a `published` status in `case-studies.js`. Do not mark data confidential or claim a reproduction package exists unless those facts have been established.

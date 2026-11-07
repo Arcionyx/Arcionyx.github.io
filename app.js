@@ -1,8 +1,11 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=2';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=2';
+import { copy, projects, experience, skills, credentials } from './content.js?v=4';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=4';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=4';
 
 Object.assign(copy.en, extendedCopy.en);
 Object.assign(copy.zh, extendedCopy.zh);
+Object.assign(copy.en, caseStudyCopy.en);
+Object.assign(copy.zh, caseStudyCopy.zh);
 
 const $ = (s, parent = document) => parent.querySelector(s);
 const $$ = (s, parent = document) => [...parent.querySelectorAll(s)];
@@ -109,6 +112,7 @@ function renderProjects() {
   grid.classList.toggle('is-filtered',currentFilter!=='all');
   grid.style.setProperty('--project-count',String(Math.min(visible.length,3)));
   visible.forEach(project => {
+    const study=caseStudies[project.id];
     const card = element('article', 'project-card');card.id=`work-${project.id}`;
     const body = element('div', 'project-body');
     const heading = element('h3'); titleText(heading, project.title[language]);
@@ -116,19 +120,55 @@ function renderProjects() {
     button.append(element('span', '', copy[language].details), element('span', '', '↗'));
     button.setAttribute('aria-label', `${copy[language].details}: ${project.title[language].replace('\n',' ')}`);
     button.addEventListener('click', () => openProject(project,button));
-    body.append(element('div', 'project-category', project.label), heading, element('div','project-scope',project.scope[language]),element('p', '', project.summary[language]),element('div','project-metric',project.metric[language]), tags(project.tags), button);
+    const problem=element('div','case-card-section');problem.append(element('span','case-card-label',copy[language].pain),element('p','project-pain',study.pain[language]));
+    const role=element('div','case-card-section');role.append(element('span','case-card-label',copy[language].contribution),element('p','project-role',study.roleSummary[language]));
+    const publicArtifacts=study.artifacts.filter(asset=>asset.status==='published'&&asset.url);
+    const metric=element('div','project-metric');metric.append(element('span','metric-kind',copy[language].scopeLabel),element('span','',project.metric[language]));
+    body.append(element('div', 'project-category', project.label), heading, element('div','project-scope',project.scope[language]),problem,role,metric,element('div','case-evidence-status',publicArtifacts.length?copy[language].evidenceReady:copy[language].evidenceStatus),tags(project.tags), button);
     card.append(projectArt(project.art, project.number), body); grid.append(card);
   });
   $('#project-status').textContent = copy[language].shown(visible.length);
 }
+function artifactUrl(value){
+  if(typeof value!=='string'||!value.trim())return null;
+  try{const url=new URL(value,window.location.href);return url.protocol==='https:'?url.href:null;}catch{return null;}
+}
+function renderCaseEvidence(study){
+  const panel=element('section','case-artifacts');panel.append(element('h3','',copy[language].artifacts));
+  const published=study.artifacts.some(asset=>asset.status==='published'&&artifactUrl(asset.url));
+  if(!published)panel.append(element('p','artifact-disclosure',copy[language].evidenceIntro));
+  const grid=element('div','artifact-grid');
+  study.artifacts.forEach(asset=>{
+    const url=asset.status==='published'?artifactUrl(asset.url):null;
+    const item=element(url?'a':'div',`artifact-item${url?' is-published':''}`);
+    if(url){item.href=url;item.target='_blank';item.rel='noopener noreferrer';}
+    item.append(element('span','artifact-kind',copy[language][asset.kind]),element('span','artifact-state',url?copy[language].available:copy[language][asset.status]||copy[language].unpublished));
+    if(asset.description?.[language])item.append(element('p','',asset.description[language]));
+    grid.append(item);
+  });
+  panel.append(grid);
+  if(study.dataAccess==='confidential'){
+    const hasReproduction=study.artifacts.some(asset=>asset.kind==='reproduction'&&asset.status==='published'&&artifactUrl(asset.url));
+    panel.append(element('p','artifact-disclosure',`${copy[language].confidentiality}${hasReproduction?'':` ${copy[language].reproductionPending}`}`));
+  }
+  panel.append(element('p','artifact-cover-note',copy[language].previewNote));
+  return panel;
+}
 function renderDialog() {
   if (!activeProject) return;
   const p = activeProject; const content = $('#dialog-content'); content.replaceChildren();
+  const study=caseStudies[p.id];
   const title = element('h2'); titleText(title, p.title[language]);
-  const points = element('ul'); p.points[language].forEach(point => points.append(element('li', '', point)));
-  const source = element('a', 'source-link', copy[language].source);
+  const contributions=element('ul','case-contributions');study.contributions[language].forEach(point=>contributions.append(element('li','',point)));
+  const methods=element('ol','case-methods');study.method[language].forEach(point=>methods.append(element('li','',point)));
+  const results=element('section','case-results');
+  const deliverables=element('ul','case-deliverables');study.deliverables[language].forEach(point=>deliverables.append(element('li','',point)));
+  const scope=element('div','case-result-scope');scope.append(element('span','',copy[language].reportedScope),element('strong','case-metric',p.metric[language]));
+  results.append(element('h3','',copy[language].results),scope,element('h4','',copy[language].deliverables),deliverables,element('h4','',copy[language].validation),element('p','case-validation',study.validation[language]));
+  const ownership=element('div','case-ownership');ownership.append(element('h4','',copy[language].ownership),element('p','',study.ownership[language]));
+  const source = element('a', 'source-link', copy[language].background);
   source.href = 'https://www.linkedin.com/in/ruixifeng777'; source.target = '_blank'; source.rel = 'noopener noreferrer';
-  content.append(element('div', 'project-category', p.label), title,element('div','case-metric',p.metric[language]), element('p', 'detail-context', p.context[language]),element('h3','',copy[language].question),element('p','case-question',p.question[language]), element('h3', '', copy[language].approach), points,element('h3','',copy[language].takeaway),element('p','',p.takeaway[language]), element('h3', '', copy[language].tools), tags(p.tags), source);
+  content.append(element('div', 'project-category', p.label),title,element('p','detail-context',p.context[language]),element('h3','',copy[language].pain),element('p','case-question',study.pain[language]),element('h3','',copy[language].contribution),contributions,ownership,element('h3','',copy[language].method),methods,results,renderCaseEvidence(study),element('h3','',copy[language].tools),tags(p.tags),source);
   title.id = 'dialog-title'; $('#project-dialog').setAttribute('aria-labelledby', title.id);
 }
 function renderExperience() {

@@ -51,7 +51,7 @@ export const focus = [
   { symbol: '↗', title: {en:'Business insight',zh:'商业洞察'}, body:{en:'Framing business questions, defining useful KPIs, and translating findings into decisions.',zh:'界定商业问题，设计有意义的 KPI，让分析结果支持决策。'},tags:['Strategy','Excel','Operations'] },
 ];
 
-export { projects, experience } from './profile.js?v=2';
+export { projects, experience } from './profile.js?v=4';
 
 export const skills = [
   {label:{en:'PROGRAMMING & ANALYTICS',zh:'编程与分析'},items:['Python','SQL','Excel','JavaScript']},
