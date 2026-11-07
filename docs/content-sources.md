@@ -51,3 +51,15 @@ Task 4 descriptions identify cumulative counts, `log_likelihood`, dynamic-progra
 The two copies of each CSV were byte-identical. Read-only inspection confirmed 48 monthly gas rows from 2020-10-31 to 2024-09-30 and 10,000 loan rows with eight columns. These counts verify input scope; they do not verify model performance or code authorship. The WEB document contained three background links and was not treated as a project output.
 
 All uploaded raw documents, CSV records, and private review notes remain outside the repository and deployment bundle. Public artifact links stay withheld as requested.
+
+## Disney analysis materials
+
+The owner identified the new Disney materials as work from the McKinsey period. Two Word documents and a 24-page presentation PDF were inspected. The PDF names Ruixi Feng as reporter and is dated February 11, 2026. The editable PPTX exceeded the tool's 32 MiB transfer limit and was not inspected; the site does not claim that the PPTX was reviewed.
+
+The analysis report explicitly compares Experiences/shareholder-return priority, aggressive streaming investment, and a disciplined balanced allocation. It recommends the balanced path, explains the trade-offs, and proposes DTC operating margin, Experiences ROIC, and free-cash-flow growth as monitoring KPIs. The business-analysis document and presentation explain the segment structure and IP monetization loop.
+
+The public case now separates the owner's recommendation and trade-offs from the company's reported facts. Disney's uploaded FY2025 earnings release is a research input. Company revenue, operating profit, and subscriptions are not treated as results attributable to this project. The case reports two written analyses and a 24-page PDF as deliverables, not realized investment returns or company adoption.
+
+No SQL script, valuation model, or quantified scenario model was included in this batch. These are not described as verified implementations in the updated case, perspective panel, or experience timeline. Prior resume assertions are not used to imply that every implementation is present in the newly reviewed materials.
+
+Original attachments and evidence links remain withheld. Only the authorized portfolio summary, judgment, contribution boundaries, and deliverable scope were updated.

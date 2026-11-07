@@ -1,6 +1,6 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=5';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=5';
-import { caseStudyCopy, caseStudies } from './case-studies.js?v=5';
+import { copy, projects, experience, skills, credentials } from './content.js?v=6';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=6';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=6';
 
 Object.assign(copy.en, extendedCopy.en);
 Object.assign(copy.zh, extendedCopy.zh);
@@ -167,9 +167,14 @@ function renderDialog() {
   const scope=element('div','case-result-scope');scope.append(element('span','',copy[language].reportedScope),element('strong','case-metric',p.metric[language]));
   results.append(element('h3','',copy[language].results),scope,element('h4','',copy[language].deliverables),deliverables,element('h4','',copy[language].validation),element('p','case-validation',study.validation[language]));
   const ownership=element('div','case-ownership');ownership.append(element('h4','',copy[language].ownership),element('p','',study.ownership[language]));
+  const judgment=element('div','case-judgment');
+  if(study.judgment)judgment.append(element('h4','',copy[language].myJudgment),element('p','',study.judgment[language]));
+  if(study.tradeoff)judgment.append(element('h4','',copy[language].tradeOff),element('p','',study.tradeoff[language]));
   const source = element('a', 'source-link', copy[language].background);
   source.href = 'https://www.linkedin.com/in/ruixifeng777'; source.target = '_blank'; source.rel = 'noopener noreferrer';
-  content.append(element('div', 'project-category', p.label),title,element('p','detail-context',p.context[language]),element('h3','',copy[language].pain),element('p','case-question',study.pain[language]),element('h3','',copy[language].contribution),contributions,ownership,element('h3','',copy[language].method),methods,results,renderCaseEvidence(study),element('h3','',copy[language].tools),tags(p.tags),source);
+  content.append(element('div', 'project-category', p.label),title,element('p','detail-context',p.context[language]),element('h3','',copy[language].pain),element('p','case-question',study.pain[language]),element('h3','',copy[language].contribution),contributions);
+  if(judgment.childElementCount)content.append(judgment);
+  content.append(ownership,element('h3','',copy[language].method),methods,results,renderCaseEvidence(study),element('h3','',copy[language].tools),tags(p.tags),source);
   title.id = 'dialog-title'; $('#project-dialog').setAttribute('aria-labelledby', title.id);
 }
 function renderExperience() {

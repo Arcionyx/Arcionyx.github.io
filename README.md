@@ -49,3 +49,5 @@ Project scope figures are labeled separately from measured outcomes. The owner h
 Project attachments and evidence links are currently withheld. Files provided later for contribution review must not be added to the public deployment without the owner's release instruction. Published artifacts need a real HTTPS URL and a `published` status in `case-studies.js`. Do not mark data confidential or claim a reproduction package exists unless those facts have been established.
 
 The natural-gas case covers the owner's confirmed Task 1–2 submissions, including storage-contract pricing. Credit-risk and FICO case details follow the inspected Task 3–4 submission text. Source review is separate from independent performance validation; raw submissions and datasets remain private.
+
+The Disney case draws on two supplied written analyses and a 24-page presentation PDF. Its personal recommendation and trade-offs are displayed separately from the company data used as inputs. The source PPTX could not be transferred because it exceeded 32 MiB; it is not counted as an inspected artifact. Original attachments remain private.

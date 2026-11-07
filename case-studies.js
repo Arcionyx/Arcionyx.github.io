@@ -2,7 +2,7 @@
 // Dataset sizes and deliverable counts are not treated as measured improvements.
 export const caseStudyCopy = {
   en: {
-    pain:'The problem', contribution:'My contribution', ownership:'Ownership boundary', method:'Method', results:'Results & validation', artifacts:'Verifiable evidence',
+    myJudgment:'My judgment',tradeOff:'The trade-off',pain:'The problem', contribution:'My contribution', ownership:'Ownership boundary', method:'Method', results:'Results & validation', artifacts:'Verifiable evidence',
     details:'Contribution & evidence',
     projectsIntro:'Two applied business projects and three case studies covering four Forage tasks, organized around the problem, my contribution, method, results, and evidence. Project scope is labeled separately from measured impact.',
     reportedScope:'Reported project scope', deliverables:'Reported deliverables', validation:'Measured performance',
@@ -14,7 +14,7 @@ export const caseStudyCopy = {
     confidentiality:'The original data is confidential.', reproductionPending:'A simplified reproduction is not published yet.',
   },
   zh: {
-    pain:'痛点',contribution:'我的贡献',ownership:'分工边界',method:'方法',results:'结果与验证',artifacts:'可验证证据',
+    myJudgment:'我的判断',tradeOff:'我的取舍',pain:'痛点',contribution:'我的贡献',ownership:'分工边界',method:'方法',results:'结果与验证',artifacts:'可验证证据',
     details:'查看贡献与证据',
     projectsIntro:'两个应用型商业项目，以及覆盖四项 Forage 任务的三个案例，按痛点、我的贡献、方法、结果与证据展开。项目规模与实际效果分开标注。',
     reportedScope:'已报告的项目范围',deliverables:'已报告的交付内容',validation:'效果验证',
@@ -41,13 +41,16 @@ export const caseStudies = {
     dataAccess:'unspecified',artifacts:withheldArtifacts(),
   },
   'disney-strategy':{
-    pain:{en:'Experiences, streaming, and linear TV have different investment needs and return profiles. The study needed a consistent way to compare three capital-allocation options over a three-to-five-year horizon.',zh:'体验业务、流媒体与线性电视的投入需求和回报路径不同。研究需要在统一的指标和 3–5 年时间范围下，比较三个资本配置方案。'},
-    roleSummary:{en:'Owned the independent study from 10-K research to capital-allocation recommendations and the executive-style presentation, with mentor feedback.',zh:'负责独立研究中从 10-K 分析、资本配置建议到管理层演示的完整过程，并结合导师反馈完善。'},
-    contributions:{en:['Led the 10-K-based research and comparison of three capital-allocation options.','Defined DTC margin, Experiences ROIC, and free-cash-flow growth as decision KPIs.','Developed SQL-supported recommendations and expanded a two-page report into an executive-style deck.'],zh:['负责基于 10-K 的研究，并比较三个资本配置方案。','将 DTC 利润率、体验业务 ROIC 和自由现金流增长设为决策 KPI。','形成 SQL 支持的建议，并把两页报告扩展为管理层风格的演示材料。']},
-    ownership:{en:'The study is described as independent in my project record, with a mentor providing feedback. The public case does not yet include SQL authorship details, calculation files, or the final report.',zh:'项目记录描述为独立研究，导师提供反馈。SQL 代码的具体编写范围、计算文件与最终报告，目前未在案例中公开。'},
-    method:{en:['Use Disney’s 10-K to structure the business and financial analysis.','Compare three strategic options across Experiences, streaming, and linear TV over three to five years.','Frame recommendations around the selected KPIs and communicate them through an executive-style deck.'],zh:['基于 Disney 10-K 组织业务与财务分析。','以 3–5 年为视角，比较体验业务、流媒体和线性电视相关的三个方案。','围绕所选 KPI 形成建议，并通过管理层风格的演示材料表达。']},
-    deliverables:{en:['Capital-allocation recommendations and an executive-style deck.','A KPI framework for comparing the strategic options.'],zh:['资本配置建议与管理层风格的演示材料。','用于比较战略方案的 KPI 框架。']},
-    validation:{en:'Three options and a three-to-five-year horizon describe the analysis scope. Implemented returns, realized cash-flow improvements, and a verified financial impact are not reported.',zh:'三个方案和 3–5 年视角属于分析范围。目前没有可报告的实际投资回报、已实现的现金流改善或经核实的财务影响。'},
+    pain:{en:'Experiences, streaming, and linear TV have different economics and investment needs. My study asked how Disney could allocate incremental capital over three to five years while balancing current cash generation, future relevance, and execution risk.',zh:'体验业务、流媒体与线性电视的经济逻辑和投资需求不同。我的研究关注：Disney 应如何在未来 3–5 年分配增量资本，同时兼顾当期现金创造、长期竞争位置与执行风险？'},
+    roleSummary:{en:'Mapped the business model, compared three capital-allocation paths, formed a balanced-strategy recommendation, selected monitoring KPIs, and organized the work into a 24-page presentation PDF.',zh:'梳理业务模式、比较三条资本配置路径，形成均衡策略建议与监测 KPI，并把研究整合为 24 页演示 PDF。'},
+    contributions:{en:['Decomposed Disney’s Entertainment, Sports, and Experiences businesses, and explained the IP monetization loop across content, distribution, parks, and consumer products.','Compared three paths: prioritize Experiences and shareholder returns; invest aggressively in streaming; or use a balanced, disciplined allocation.','Made a personal recommendation and explained its downside and execution trade-offs rather than only summarizing the company.','Selected DTC operating margin, Experiences ROIC, and free-cash-flow growth to monitor the recommendation.','Organized the research into two written analyses and a 24-page presentation PDF covering the business, FY2025 snapshot, value drivers, risks, outlook, and takeaways.'],zh:['拆解 Disney 的娱乐、体育与体验业务，并解释内容、渠道、乐园与消费品之间的 IP 变现循环。','比较三条路径：优先体验业务及股东回报、激进加码流媒体、或采取有资本纪律的均衡配置。','给出个人推荐，并解释其代价与执行风险，而非只做公司概况总结。','选择 DTC 营业利润率、Experiences 投入资本回报率和自由现金流增长，作为建议的监测指标。','把研究整理为两份分析稿及 24 页演示 PDF，覆盖业务、FY2025 表现、价值驱动、风险、展望和核心判断。']},
+    judgment:{en:'I recommended the balanced path: position Experiences as the portfolio’s cash-generation base, continue selective streaming investment with tougher return hurdles, and manage linear TV primarily for cash recovery.',zh:'我推荐均衡路径：把 Experiences 定位为组合的现金创造基础，继续选择性投入流媒体并提高回报门槛，同时以现金回收为主来管理线性电视。'},
+    tradeoff:{en:'This gives up both an all-in bet on the most visible near-term cash generator and a maximum-speed streaming land grab. The recommendation depends on management enforcing allocation discipline without becoming so conservative that streaming loses relevance.',zh:'这一选择同时放弃了“全部押注短期现金引擎”和“以最高速度抢占流媒体规模”两个极端。建议成立的条件是管理层执行资本纪律，同时避免过度保守导致流媒体失去竞争位置。'},
+    ownership:{en:'My contribution is the company analysis, comparison of alternatives, recommendation, KPI selection, and presentation synthesis; mentor feedback helped refine the work. The reviewed materials do not include SQL scripts or a numerical valuation model.',zh:'我的贡献是公司分析、方案比较、推荐形成、KPI 选择和演示整合；导师反馈用于完善工作。已核对材料不包含 SQL 脚本或数值估值模型。'},
+    method:{en:['Use the business-analysis notes and Disney’s FY2025 earnings disclosure to map the company’s business and segment economics.','Compare the three strategic paths over a three-to-five-year horizon and articulate their different trade-offs.','State the balanced recommendation and define three KPIs that would help monitor its execution.','Synthesize the work into written analyses and an executive-style presentation.'],zh:['基于业务分析稿和 Disney FY2025 业绩披露，梳理业务结构与分部经济逻辑。','以 3–5 年为视角比较三条战略路径，明确不同方案的取舍。','提出均衡策略建议，并定义三个用于跟踪执行的 KPI。','把研究整合为文字分析和管理层风格的演示材料。']},
+    deliverables:{en:['Two written analyses and a 24-page presentation PDF dated February 11, 2026.','A three-path capital-allocation comparison, a balanced-strategy recommendation, and three proposed monitoring KPIs.'],zh:['两份文字分析，以及日期为 2026 年 2 月 11 日的 24 页演示 PDF。','三路径资本配置比较、均衡策略建议和三个拟议监测 KPI。']},
+    validation:{en:'Company revenue, segment profit, and subscription figures are research inputs. The recommendation is a qualitative strategic judgment; the materials do not establish adoption by Disney, realized investment returns, or a financial improvement attributable to this study.',zh:'公司营收、分部利润和订阅规模属于研究输入。建议属于定性战略判断；现有材料不能证明 Disney 已采纳方案，也不支持声称实际投资回报或可归因于本研究的财务改善。'},
+    reviewNote:{en:'The two analysis documents, the 24-page presentation PDF, and the FY2025 earnings disclosure were reviewed for the implementation summary. Original attachments and evidence links remain withheld.',zh:'已核对两份分析文档、24 页演示 PDF 和 FY2025 业绩披露，以整理工作内容。原始附件与证据链接继续暂不公开。'},
     dataAccess:'unspecified',artifacts:withheldArtifacts(),
   },
   'gas-forecast':{
