@@ -1,5 +1,5 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=11';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=11';
+import { copy, projects, experience, skills, credentials } from './content.js?v=12';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=12';
 import { caseStudyCopy, caseStudies } from './case-studies.js?v=10';
 import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=10';
 

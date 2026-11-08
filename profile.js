@@ -139,7 +139,7 @@ export const experience = [
 ];
 
 export const coursework = [
-  {title:{en:'Quantitative & technical',zh:'量化与技术基础'},items:{en:['Statistics','Programming'],zh:['统计学','编程']}},
+  {title:{en:'Quantitative & technical',zh:'量化与技术基础'},items:{en:['Statistics for Business','Foundations of Business Programming'],zh:['商业统计学','商业编程基础']}},
   {title:{en:'Finance & economic context',zh:'会计与经济学'},items:{en:['Financial Accounting','Microeconomics','Macroeconomics'],zh:['财务会计','微观经济学','宏观经济学']}},
   {title:{en:'Operational thinking',zh:'运营管理'},items:{en:['Supply Chain Management'],zh:['供应链管理']}},
 ];
