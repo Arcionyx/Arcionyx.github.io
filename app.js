@@ -1,6 +1,6 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=12';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=12';
-import { caseStudyCopy, caseStudies } from './case-studies.js?v=10';
+import { copy, projects, experience, skills, credentials } from './content.js?v=13';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=13';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=13';
 import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=10';
 
 Object.assign(copy.en, extendedCopy.en);
@@ -16,7 +16,7 @@ const preferredLanguage=saved('rf-language');
 let language=['en','zh'].includes(preferredLanguage)?preferredLanguage:navigator.language.toLowerCase().startsWith('zh')?'zh':'en';
 let currentFilter = 'all';
 let currentJourney = 'all';
-let currentLens = 'quant';
+let currentLens = perspectives[0].id;
 let activeProject = null;
 let lastProjectButton = null;
 let nextDialogFocus = null;
@@ -77,11 +77,12 @@ function renderFocus() {
   const tabs=element('div','lens-tabs'); tabs.setAttribute('role','tablist'); tabs.setAttribute('aria-label',copy[language].lensLabel);
   perspectives.forEach((item,index)=>{
     const tab=element('button','lens-tab');tab.type='button';tab.id=`lens-tab-${item.id}`;
-    tab.append(element('span','',`0${index+1}`),element('strong','',['QUANT','IT / SYSTEMS','BUSINESS ANALYTICS'][index]));
+    tab.append(element('span','',`0${index+1}`),element('strong','',item.label));
     tab.setAttribute('role','tab');tab.setAttribute('aria-controls','perspective-panel');tab.setAttribute('aria-selected',String(currentLens===item.id));tab.tabIndex=currentLens===item.id?0:-1;
     tab.addEventListener('click',()=>selectLens(item.id,true));
     tab.addEventListener('keydown',event=>{
-      const next=event.key==='ArrowRight'?(index+1)%3:event.key==='ArrowLeft'?(index+2)%3:event.key==='Home'?0:event.key==='End'?2:null;
+      const count=perspectives.length;
+      const next=event.key==='ArrowRight'?(index+1)%count:event.key==='ArrowLeft'?(index+count-1)%count:event.key==='Home'?0:event.key==='End'?count-1:null;
       if(next!==null){event.preventDefault();selectLens(perspectives[next].id,true);}
     });tabs.append(tab);
   });
@@ -273,7 +274,7 @@ function setLanguage() {
   $('#language-toggle').textContent = language === 'en' ? '中文' : 'EN';
   $('#language-toggle').setAttribute('aria-label', language === 'en' ? '切换到中文' : 'Switch to English');
   $('#close-dialog').setAttribute('aria-label', copy[language].close);
-  document.title = language === 'en' ? 'Ruixi Feng — Quant × Technology × Business' : 'Ruixi Feng — 量化 × 技术 × 商业分析';
+  document.title = language === 'en' ? 'Ruixi Feng — Business Analytics × Quant × IT' : 'Ruixi Feng — 商业分析 × 量化 × 信息技术';
   renderEvidence();renderFocus(); renderProjects(); renderExperience(); renderSkills(); renderDialog(); syncMotionButton(); syncMenuLabel();setGasLabLanguage(language);
 }
 $('#language-toggle').addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; persist('rf-language',language); setLanguage(); });

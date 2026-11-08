@@ -1,6 +1,6 @@
 # Ruixi Feng — personal portfolio
 
-A responsive black-and-blue portfolio connecting Quant, IT, and Business Analytics. Two applied project cards and one Forage series entry preserve five detailed case studies. A dated natural-gas follow-up adds a synthetic-data storage demo and aggregate out-of-time validation. Includes five filterable experience entries, academic coursework, twelve learning records, and personal interests. English and Chinese copy, a pausable mathematical wireframe, and a reading-progress indicator. Static HTML/CSS/JavaScript; no production dependencies, backend, API key, or database required.
+A responsive black-and-blue portfolio led by Business Analytics, followed by Quant and IT. The BA perspective opens by default; the Disney business-analysis case and business-related learning appear first. Two applied project cards and one Forage series entry preserve five detailed case studies. A dated natural-gas follow-up adds a synthetic-data storage demo and aggregate out-of-time validation. Includes five filterable experience entries, academic coursework, twelve learning records, and personal interests. English and Chinese copy, a pausable mathematical wireframe, and a reading-progress indicator. Static HTML/CSS/JavaScript; no production dependencies, backend, API key, or database required.
 
 ## Preview
 

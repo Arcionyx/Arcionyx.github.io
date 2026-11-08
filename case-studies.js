@@ -4,7 +4,7 @@ export const caseStudyCopy = {
   en: {
     myJudgment:'My judgment',tradeOff:'The trade-off',pain:'The problem', contribution:'My contribution', ownership:'Ownership boundary', method:'Method', results:'Results & validation', artifacts:'Verifiable evidence',
     details:'Contribution & evidence',
-    projectsIntro:'Applied work in e-commerce and business strategy, followed by one quantitative research series. Each case connects the problem, my contribution, and the deliverables.',
+    projectsIntro:'Business strategy and e-commerce analysis, followed by one quantitative research series. Each case connects the problem, my contribution, and the deliverables.',
     publicationNote:'Original project attachments remain private for now. The dated gas follow-up below includes public reproduction code, aggregate validation results, and a synthetic-data demo. Individual case studies retain their ownership and evaluation limits.',
     seriesEyebrow:'ONE PROGRAM · FOUR TASKS',seriesTitle:'J.P. Morgan / Forage',seriesSubtitle:'Quantitative Research Job Simulation',
     seriesIntro:'From price estimation and storage valuation to default classification and credit-score segmentation. Four learning tasks, organized into three modules.',
@@ -22,7 +22,7 @@ export const caseStudyCopy = {
   zh: {
     myJudgment:'我的判断',tradeOff:'我的取舍',pain:'要解决的问题',contribution:'我的贡献',ownership:'个人工作与协作分工',method:'分析方法',results:'结果与验证',artifacts:'项目材料与佐证',
     details:'查看项目详情',
-    projectsIntro:'这里收录了电商分析、Disney 战略研究和量化研究模拟。案例详情会说明项目要解决的问题、我的具体工作和完成的内容。',
+    projectsIntro:'这里收录了 Disney 战略研究、电商分析和量化研究模拟。案例详情会说明项目要解决的问题、我的具体工作和完成的内容。',
     publicationNote:'原始项目附件暂不公开。天然气项目新增了公开复现代码、汇总验证结果和合成数据演示，并注明更新日期。各案例的分工和评估情况可在详情中查看。',
     seriesEyebrow:'一个项目 · 四项任务',seriesTitle:'J.P. Morgan / Forage',seriesSubtitle:'量化研究职业模拟',
     seriesIntro:'四项任务涉及价格估计、储气合约定价、违约分类和信用评分分组，这里按三个模块整理。',

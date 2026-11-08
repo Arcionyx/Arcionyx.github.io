@@ -3,9 +3,9 @@
 export const copy = {
   en: {
     skip: 'Skip to content', navAbout: 'About', navWork: 'Selected work', navExperience: 'Experience', navContact: 'Contact',
-    eyebrow: 'QUANT × TECHNOLOGY × BUSINESS', motion: 'Toggle animation',
+    eyebrow: 'BUSINESS ANALYTICS × QUANT × IT', motion: 'Toggle animation',
     heroStatement: 'Find the signal.\nBuild what matters.',
-    heroDescription: 'Connecting quantitative thinking, technical systems, and business insight. A BAIT student at Rutgers Business School, exploring the space where data becomes decisions.',
+    heroDescription: 'A BAIT student at Rutgers Business School, focused on business analytics and supported by quantitative methods and coding.',
     explore: 'Explore my work', location: 'New Brunswick, NJ', visualCaption: 'PATTERNS → SYSTEMS → INSIGHT',
     heroBottom: 'CURIOUS BY NATURE. ANALYTICAL BY DESIGN.', scroll: 'SCROLL TO EXPLORE',
     aboutNote: 'A MULTIDISCIPLINARY PERSPECTIVE', aboutTitle: 'At the intersection\nof three worlds.',
@@ -24,12 +24,12 @@ export const copy = {
   },
   zh: {
     skip: '跳转到正文', navAbout: '关于我', navWork: '精选项目', navExperience: '个人经历', navContact: '联系',
-    eyebrow: '量化思维 × 信息技术 × 商业分析', motion: '切换动态效果',
+    eyebrow: '商业分析 × 量化研究 × 信息技术', motion: '切换动态效果',
     heroStatement: '用模型分析问题，\n用代码实现想法。',
     heroDescription: '我在 Rutgers Business School 就读商业分析与信息技术专业，关注金融市场、数据分析和工具开发。',
     explore: '查看我的项目', location: '美国 · 新泽西州', visualCaption: '数据分析 → 工具开发 → 业务建议',
     heroBottom: '研究感兴趣的问题，做能用得上的工具。', scroll: '继续浏览',
-    aboutNote: '量化研究 / 技术开发 / 商业分析', aboutTitle: '关于我',
+    aboutNote: '商业分析 / 量化研究 / 技术开发', aboutTitle: '关于我',
     aboutLead: '我是 Ruixi，目前在 Rutgers Business School 就读商业分析与信息技术本科。',
     aboutBody: '我对金融市场、商业分析和技术开发都有兴趣，也做过量化研究模拟和电商运营分析。实践中，我逐渐学会拆解问题、选择方法，并把结果整理成可供参考的建议。',
     degree: '理学学士 · 商业分析与信息技术', graduation: '预计 2029 年 5 月毕业 · GPA 3.51 / 4.00',
@@ -46,16 +46,17 @@ export const copy = {
 };
 
 export const focus = [
+  { symbol: '↗', title: {en:'Business insight',zh:'商业洞察'}, body:{en:'Framing business questions, defining useful KPIs, and translating findings into decisions.',zh:'明确业务问题，选择合适的 KPI，并说明分析结论。'},tags:['Strategy','Excel','Operations'] },
   { symbol: '∑', title: {en:'Quantitative thinking',zh:'量化思维'}, body:{en:'Exploring time-series patterns, credit risk, and financial markets through structured models.',zh:'研究时间序列和信用风险，学习用模型分析金融问题。'},tags:['Time series','Credit risk','Python'] },
   { symbol: '</>', title: {en:'Technical building',zh:'技术开发'}, body:{en:'Working with code, data workflows, and automation to connect analysis with practical operations.',zh:'编写代码、整理数据，尝试用自动化工具处理运营工作。'},tags:['Python','SQL','JavaScript'] },
-  { symbol: '↗', title: {en:'Business insight',zh:'商业洞察'}, body:{en:'Framing business questions, defining useful KPIs, and translating findings into decisions.',zh:'明确业务问题，选择合适的 KPI，并说明分析结论。'},tags:['Strategy','Excel','Operations'] },
 ];
 
-export { projects, experience } from './profile.js?v=12';
+export { projects, experience } from './profile.js?v=13';
 
 export const skills = [
-  {label:{en:'PROGRAMMING & ANALYTICS',zh:'编程与分析'},items:['Python','SQL','Excel','JavaScript']},
-  {label:{en:'DESIGN & COMMUNICATION',zh:'设计与沟通'},items:['PowerPoint','Figma','Photoshop','Illustrator','AutoCAD']},
+  {label:{en:'BUSINESS ANALYSIS & COMMUNICATION',zh:'商业分析与沟通'},items:['Excel','PowerPoint']},
+  {label:{en:'QUANT & PROGRAMMING',zh:'量化与编程'},items:['Python','SQL','JavaScript']},
+  {label:{en:'DESIGN TOOLS',zh:'设计工具'},items:['Figma','Photoshop','Illustrator','AutoCAD']},
   {label:{en:'LANGUAGES',zh:'语言'},items:['English','Mandarin','Cantonese']},
 ];
 
