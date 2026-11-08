@@ -1,7 +1,7 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=9';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=9';
-import { caseStudyCopy, caseStudies } from './case-studies.js?v=9';
-import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=9';
+import { copy, projects, experience, skills, credentials } from './content.js?v=10';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=10';
+import { caseStudyCopy, caseStudies } from './case-studies.js?v=10';
+import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=10';
 
 Object.assign(copy.en, extendedCopy.en);
 Object.assign(copy.zh, extendedCopy.zh);

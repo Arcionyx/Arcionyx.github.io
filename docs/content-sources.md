@@ -79,3 +79,7 @@ The 48-row uploaded gas input (SHA-256 ec8eb18340c7bd24c92b4307325bdcc1f285cdf9e
 Only aggregate scores, source hash, protocol, and evaluation date are published in assets/gas-validation.json. Original rows and per-date predictions remain outside the repository. The interactive chart and contract use a separately specified synthetic generator, illustrative USD/unit prices, and explicit inventory, capacity, daily-rate, fee, and billing assumptions. The dataset-specific scores cannot be recomputed from the synthetic demo; a matching private input file is required. No prediction interval, live-market performance, company adoption, or trading return is claimed.
 
 The new reproduction is the only newly published project proof link. Original task documents, CSVs, reports, and evidence links remain withheld as requested. The homepage has two applied project cards and a single Forage series, with four tasks organized into three modules. All five contribution dialogs are retained.
+
+## Chinese wording revision
+
+The owner requested natural Chinese copy throughout the interface. Titles, biography, project descriptions, experience entries, interests, and demo explanations were revised to remove repetitive rhetorical structures and stiff translations. English interface text, shared project data, original/new submission attribution, validation results, publication settings, and layout were preserved. Chinese copy edits do not establish additional work, independent authorship, or measured outcomes.
