@@ -1,5 +1,5 @@
-import { copy, projects, experience, skills, credentials } from './content.js?v=10';
-import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=10';
+import { copy, projects, experience, skills, credentials } from './content.js?v=11';
+import { extendedCopy, evidence, perspectives, coursework, learningGroups, personalInterests } from './profile.js?v=11';
 import { caseStudyCopy, caseStudies } from './case-studies.js?v=10';
 import { initGasLab, setGasLabLanguage } from './gas-lab.js?v=10';
 
@@ -263,7 +263,7 @@ function renderSkills() {
   const personal=$('#personal-grid');personal.replaceChildren();
   personalInterests.forEach(item=>{
     const card=element('article',`personal-card personal-${item.id}`);
-    const art=element('div','personal-art',item.id==='creative'?'⌁':item.id==='markets'?'↗':'◎');art.setAttribute('aria-hidden','true');
+    const art=element('div','personal-art',item.id==='creative'?'⌁':item.id==='markets'?'↗':item.id==='sports'?'◌':'◎');art.setAttribute('aria-hidden','true');
     card.append(art,element('span','mono personal-number',item.number),element('h3','',item.title[language]),element('div','personal-subtitle',item.subtitle[language]),element('p','',item.body[language]));personal.append(card);
   });
 }

@@ -83,3 +83,9 @@ The new reproduction is the only newly published project proof link. Original ta
 ## Chinese wording revision
 
 The owner requested natural Chinese copy throughout the interface. Titles, biography, project descriptions, experience entries, interests, and demo explanations were revised to remove repetitive rhetorical structures and stiff translations. English interface text, shared project data, original/new submission attribution, validation results, publication settings, and layout were preserved. Chinese copy edits do not establish additional work, independent authorship, or measured outcomes.
+
+## Art, design, and sports interests
+
+The owner supplied a personal account of learning piano and painting since childhood, training in fine art with drawing/color/quick-sketch foundations, exploring architecture and interior design, and later interaction design. They also described an interest in business and entrepreneurship and a wish to apply AI and financial technology to income-generating products or businesses. These are self-reported interests, training, and aspirations; no professional design qualification or realized earnings is implied.
+
+The interests section now has four bilingual cards: business/finance/entrepreneurship, piano/art/design, sports, and volunteering/conversation. Basketball and running were added alongside the documented table-tennis interest. Existing photography, conservation, and language information is retained. The school-stage chronology and reasons for changing study directions are saved outside the public repository as material for a future personal-story page. This update does not add that page or alter the professional experience timeline.

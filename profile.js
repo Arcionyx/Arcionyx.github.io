@@ -152,7 +152,28 @@ export const learningGroups = [
 ];
 
 export const personalInterests = [
-  {id:'markets',number:'01',title:{en:'Markets & new ventures',zh:'金融市场与创业'},subtitle:{en:'EQUITY RESEARCH / FINANCIAL MARKETS / ENTREPRENEURSHIP',zh:'股票研究 / 金融市场 / 创业'},body:{en:'Equity research, financial markets, and entrepreneurship are recurring interests. They connect my quantitative curiosity with questions about businesses, investment choices, and how ideas become something useful.',zh:'我平时关注股票研究、金融市场和创业，喜欢了解企业如何经营、投资判断有哪些依据，以及一个想法怎样做成产品或业务。'}},
-  {id:'creative',number:'02',title:{en:'A creative lens',zh:'钢琴、摄影与建筑'},subtitle:{en:'PIANO / PHOTOGRAPHY / ARCHITECTURE',zh:'钢琴 / 摄影 / 建筑'},body:{en:'Piano, photography, and architecture sit alongside my technical interests. They make room for rhythm, composition, detail, and different ways of paying attention to the world.',zh:'我喜欢钢琴、摄影和建筑，也喜欢琢磨节奏、构图和细节。'}},
-  {id:'people',number:'03',title:{en:'People & shared spaces',zh:'校园活动与志愿服务'},subtitle:{en:'CAMPUS / CONSERVATION / THREE LANGUAGES',zh:'校园社群 / 自然保护 / 三种语言'},body:{en:'From helping a new table-tennis player to supporting conservation awareness, I value practical participation. I speak English, Mandarin, and Cantonese, and enjoy bringing different perspectives into a conversation.',zh:'我参加乒乓球社团，也做过自然保护志愿服务，愿意为身边的活动出一份力。我会英语、普通话和粤语，喜欢和不同背景的人交流。'}},
+  {
+    id:'markets',number:'01',
+    title:{en:'Business, finance & entrepreneurship',zh:'商业、金融与创业'},
+    subtitle:{en:'EQUITY RESEARCH / AI / FINTECH / ENTREPRENEURSHIP',zh:'股票研究 / AI 应用 / 金融科技 / 创业'},
+    body:{en:'I follow equity research and financial markets, and I want to build a business of my own. I’m learning about business and exploring how AI and financial technology could help me develop useful products or services that generate income.',zh:'我对金融市场和创业很感兴趣，也在学习商业知识。平时关注股票研究、AI 和金融科技，希望将来能自己创业，做出有人愿意使用、也能带来收入的产品或服务。'},
+  },
+  {
+    id:'creative',number:'02',
+    title:{en:'Piano, art & design',zh:'钢琴、绘画与设计'},
+    subtitle:{en:'PIANO / FINE ART / ARCHITECTURE / INTERACTION DESIGN',zh:'钢琴 / 美术 / 建筑 / 交互设计'},
+    body:{en:'I started learning piano and drawing as a child, and still enjoy both. Fine-art training gave me a solid foundation in drawing, color studies, and quick sketching. I later explored architecture, interior design, and interaction design. I also enjoy photography.',zh:'我从小学习钢琴和绘画，也一直很喜欢。早期的纯艺训练让我有了较扎实的素描、色彩和速写基础，后来还接触过建筑、室内和交互设计。平时也喜欢摄影。'},
+  },
+  {
+    id:'sports',number:'03',
+    title:{en:'Basketball, table tennis & running',zh:'篮球、乒乓球与跑步'},
+    subtitle:{en:'BASKETBALL / TABLE TENNIS / RUNNING',zh:'篮球 / 乒乓球 / 跑步'},
+    body:{en:'I enjoy basketball, table tennis, and running. During my time with the Rutgers Table Tennis Club, I also helped with practices and match-day arrangements and supported new players as they learned the basics.',zh:'我喜欢打篮球、乒乓球，也喜欢跑步。参加 Rutgers 乒乓球社团时，我还协助过训练和比赛安排，帮助新成员练习基础动作。'},
+  },
+  {
+    id:'people',number:'04',
+    title:{en:'Volunteering & conversation',zh:'志愿服务与交流'},
+    subtitle:{en:'CONSERVATION / COMMUNITY / THREE LANGUAGES',zh:'自然保护 / 志愿活动 / 三种语言'},
+    body:{en:'I have taken part in conservation volunteering, including environmental awareness and education activities. I speak English, Mandarin, and Cantonese, and enjoy talking with people from different backgrounds.',zh:'我做过自然保护志愿服务，参与环保宣传和教育活动。我会英语、普通话和粤语，喜欢和不同背景的人交流。'},
+  },
 ];
